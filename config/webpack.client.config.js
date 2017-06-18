@@ -9,6 +9,9 @@ module.exports = merge(baseConfig, {
   output: {
     filename: '[name].js',
   },
+  node: {
+    fs: "empty"
+  }
   // plugins: [
   //   // Important: this splits the webpack runtime into a leading chunk
   //   // so that async chunks can be injected right after it.

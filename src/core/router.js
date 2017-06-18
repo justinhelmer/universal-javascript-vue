@@ -18,6 +18,11 @@ export function createRouter () {
         component: () => import('../components/Heroes.vue')
       },
       {
+        name: 'hero',
+        path: '/hero/:id',
+        component: () => import('../components/Hero.vue')
+      },
+      {
         name: 'cards',
         path: '/cards',
         component: () => import('../components/Cards.vue')

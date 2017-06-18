@@ -1,7 +1,7 @@
 <template>
-  <div id="cards">
-    Cards page
-  </div>
+    <div id="cards">
+        <h1>Cards</h1>
+    </div>
 </template>
 
 <script>

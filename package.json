@@ -17,17 +17,23 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack --config config/webpack.client.config.js",
     "build:server": "webpack --config config/webpack.server.config.js",
-    "start": "node index.js"
+    "start": "node server"
   },
   "keywords": [
     "paragon"
   ],
   "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "jquery": "^3.2.1",
     "lodash.template": "^4.4.0",
     "vue": "^2.3.4",
     "vue-router": "^2.6.0",
-    "vue-server-renderer": "^2.3.4"
+    "vue-server-renderer": "^2.3.4",
+    "vuex": "^2.3.1",
+    "vuex-router-sync": "^4.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
