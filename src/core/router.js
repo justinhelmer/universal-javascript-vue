@@ -10,17 +10,17 @@ export function createRouter () {
       {
         name: 'home',
         path: '/',
-        component: () => import('./components/Home.vue')
+        component: () => import('../components/Home.vue')
       },
       {
         name: 'heroes',
         path: '/heroes',
-        component: () => import('./components/Heroes.vue')
+        component: () => import('../components/Heroes.vue')
       },
       {
         name: 'cards',
         path: '/cards',
-        component: () => import('./components/Cards.vue')
+        component: () => import('../components/Cards.vue')
       }
     ]
   });
