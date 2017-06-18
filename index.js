@@ -10,43 +10,20 @@ const globalContext = {
 
 const indexHTML = fs.readFileSync(path.resolve(__dirname, './src/index.html'), 'utf8');
 
-server.use('/dist', express.static('dist'));
+enableStaticFileServer();
+enableAppServer();
+startServer();
 
-config.ssr ? attachRoutesWithSSREnabled() : attachRoutesWithSSRDisabled();
+function enableStaticFileServer() {
+  server.use('/dist', express.static('dist'));
+}
 
-server.listen(process.env.PORT || 3000);
+function enableAppServer() {
+  config.ssr ? serveAppWithSSREnabled() : serveAppWithSSRDisabled();
+}
 
-/**
- * With SSR disabled, the empty (but compiled) index.html file will be served on every request.
- *
- * Uses the compile logic that vue-server-render uses internally. Both the same compile library (lodash.template)
- * and the same compile options are being used. @see vue-server-renderer/build.js - parseTemplate().
- *
- * In addition, appends '<div id="app"></div>' to the HTML body.
- *     - With SSR enabled, this root element is injected by the vue-server-render when src/main.server.js
- *       loads src/core/app. This in-turn loads App.vue which has the <div id="app"></div> wrapper.
- *     - With SSR disabled, src/main.client.js will attempt to mount to #app, so it therefore must exist.
- *
- * This function is intended to be called only once when the server is started, due to its high computation.
- *
- * @see vue-server-renderer/build.js - parseTemplate().
- */
-function attachRoutesWithSSRDisabled() {
-  const compile = require('lodash.template');
-
-  const compileOptions = {
-    escape: /{{([^{][\s\S]+?[^}])}}/g,
-    interpolate: /{{{([\s\S]+?)}}}/g
-  };
-
-  const closure = indexHTML.indexOf('</body>');
-  const head = indexHTML.substr(0, closure); // everything up to the closing body tag
-  const neck = '<div id="app"></div>';
-  const tail = indexHTML.substr(closure); // everything after the closing body tag
-
-  const compiledIndexHTML = compile(head + neck + tail, compileOptions)(globalContext);
-
-  server.get('*', (req, res) => res.end(compiledIndexHTML));
+function startServer() {
+  server.listen(process.env.PORT || 3000);
 }
 
 /**
@@ -60,7 +37,7 @@ function attachRoutesWithSSRDisabled() {
  * @see https://ssr.vuejs.org/en/structure.html
  * @see ./src/main.server.js
  */
-function attachRoutesWithSSREnabled() {
+function serveAppWithSSREnabled() {
   const renderer = require('vue-server-renderer').createRenderer({
     template: indexHTML
   });
@@ -90,4 +67,37 @@ function attachRoutesWithSSREnabled() {
           console.error('ERR:', '-', req.url, err);
         });
   });
+}
+
+/**
+ * With SSR disabled, the empty (but compiled) index.html file will be served on every request.
+ *
+ * Uses the compile logic that vue-server-render uses internally. Both the same compile library (lodash.template)
+ * and the same compile options are being used. @see vue-server-renderer/build.js - parseTemplate().
+ *
+ * In addition, appends '<div id="app"></div>' to the HTML body.
+ *     - With SSR enabled, this root element is injected by the vue-server-render when src/main.server.js
+ *       loads src/core/app. This in-turn loads App.vue which has the <div id="app"></div> wrapper.
+ *     - With SSR disabled, src/main.client.js will attempt to mount to #app, so it therefore must exist.
+ *
+ * This function is intended to be called only once when the server is started, due to its high computation.
+ *
+ * @see vue-server-renderer/build.js - parseTemplate().
+ */
+function serveAppWithSSRDisabled() {
+  const compile = require('lodash.template');
+
+  const compileOptions = {
+    escape: /{{([^{][\s\S]+?[^}])}}/g,
+    interpolate: /{{{([\s\S]+?)}}}/g
+  };
+
+  const closure = indexHTML.indexOf('</body>');
+  const head = indexHTML.substr(0, closure); // everything up to the closing body tag
+  const neck = '<div id="app"></div>';
+  const tail = indexHTML.substr(closure); // everything after the closing body tag
+
+  const compiledIndexHTML = compile(head + neck + tail, compileOptions)(globalContext);
+
+  server.get('*', (req, res) => res.end(compiledIndexHTML));
 }
