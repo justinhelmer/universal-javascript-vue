@@ -22,7 +22,6 @@ Some of the possible reasons to choose this over something else:
 - Centralized state management and DOM hydration using [Vuex](https://github.com/vuejs/vuex) and [vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
 - Centralized API proxy using [Axios](https://github.com/vuejs/vuex), with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html)
 - Support for priority asset resource [prefetching / preloading](https://www.keycdn.com/blog/resource-hints/)
-- Enable/disable server-side rendering with the [flip of a switch](#configuration)
 - @TODO - Support for Hot Module Reloading
 
 ## Architecture Overview
@@ -55,9 +54,6 @@ The following config properties (`config/index.js`) are recognized by the boiler
 
 ```js
 module.exports = {
-  // enable/disable server-side rendering. defaults to false if not set
-  ssr: true,
-
   // The API proxy will be enabled if this configuration object exists
   proxy: {
     // HTTP requests made within the application code that begin

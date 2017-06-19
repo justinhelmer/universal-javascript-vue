@@ -1,7 +1,6 @@
 require('dotenv').load();
 
 module.exports = {
-  ssr: true,
   proxy: {
     target: 'https://developer-paragon.epicgames.com',
     headers: {

@@ -28,7 +28,6 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "jquery": "^3.2.1",
-    "lodash.template": "^4.4.0",
     "vue": "^2.3.4",
     "vue-router": "^2.6.0",
     "vue-server-renderer": "^2.3.4",
