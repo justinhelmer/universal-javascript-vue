@@ -18,22 +18,36 @@ Some of the possible reasons to choose this over something else:
 ## Features
 
 - Full [Webpack 2](https://webpack.js.org/) support with [Babel](https://babeljs.io/)
-- Centralized routing using [vue-router](https://github.com/vuejs/vue-router), with a strong focus on component-based architecture
-- Centralized state management / data store using [Vuex](https://github.com/vuejs/vuex) and [vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
+- Centralized routing using [vue-router](https://github.com/vuejs/vue-router), with a strong focus on component-based architecture (code splitting)
+- Centralized state management and DOM hydration using [Vuex](https://github.com/vuejs/vuex) and [vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
 - Centralized API proxy using [Axios](https://github.com/vuejs/vuex), with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html)
 - Support for priority asset resource [prefetching / preloading](https://www.keycdn.com/blog/resource-hints/)
 - Enable/disable server-side rendering with the [flip of a switch](#configuration)
 - @TODO - Support for Hot Module Reloading
 
+## Architecture Overview
+
+<img width="973" alt="screen shot 2016-08-11 at 6 06 57 pm" src="https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png">
+
+**A detailed Vue SSR guide can be found [here](https://ssr.vuejs.org).**
+
 ## Setup
 
-```bash
+**Requires Node.js 6+**
+
+``` bash
+# install dependencies
 npm install
+
+# serve in dev mode, with hot reload at localhost:3000 (or `process.env.PORT`)
+npm run dev
+
+# build for production
 npm run build
+
+# serve in production mode
 npm start
 ```
-
-Visit [http://localhost:3000](http://localhost:3000)
 
 ## Configuration
 
@@ -61,3 +75,8 @@ module.exports = {
   }
 };
 ```
+
+## License
+
+MIT
+
