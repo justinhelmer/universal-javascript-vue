@@ -29,13 +29,7 @@ Some of the possible reasons to choose this over something else:
 
 ```bash
 npm install
-```
-
-```bash
 npm run build
-```
-
-```bash
 npm start
 ```
 
