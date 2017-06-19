@@ -17,6 +17,7 @@ const fs = require('fs');
 const LRU = require('lru-cache');
 const path = require('path');
 
+const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
 
 module.exports = function (server) {

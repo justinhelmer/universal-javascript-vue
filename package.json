@@ -14,10 +14,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "webpack --config config/webpack.client.config.js",
-    "build:server": "webpack --config config/webpack.server.config.js",
-    "start": "node server"
+    "build": "rimraf dist && npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.client.config.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js --progress --hide-modules",
+    "dev": "node server",
+    "start": "cross-env NODE_ENV=production node server"
   },
   "keywords": [
     "paragon"
@@ -25,6 +26,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "cross-env": "^5.0.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "jquery": "^3.2.1",
@@ -42,6 +44,7 @@
     "babel-preset-env": "^1.5.2",
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
+    "rimraf": "^2.6.1",
     "vue-loader": "^12.2.1",
     "vue-template-compiler": "^2.3.4",
     "webpack": "^2.6.1",

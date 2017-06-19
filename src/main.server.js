@@ -17,11 +17,21 @@
  */
 import { createApp } from './core/app';
 
+const isDev = process.env.NODE_ENV !== 'production';
+
 export default context => {
   return new Promise((resolve, reject) => {
+    const s = isDev && Date.now();
     const { app, router, store } = createApp();
 
-    router.push(context.url);
+    const { url } = context;
+    const fullPath = router.resolve(url).route.fullPath;
+
+    if (fullPath !== url) {
+      reject({ url: fullPath });
+    }
+
+    router.push(context.url); // // sets the router's location
 
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents();
@@ -30,13 +40,13 @@ export default context => {
         reject({ code: 404 });
       }
 
-      Promise.all(matchedComponents.map(Component => {
-        if (Component.asyncData) {
-          return Component.asyncData({store, route: router.currentRoute});
-        }
-      })).then(() => {
-        context.state = store.state;
+      Promise.all(matchedComponents.map(({ asyncData }) => asyncData && asyncData({
+        store,
+        route: router.currentRoute
+      }))).then(() => {
+        isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`);
 
+        context.state = store.state;
         resolve(app);
       }).catch(reject)
     }, reject);
