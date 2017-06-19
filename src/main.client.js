@@ -20,7 +20,7 @@
  * @see src/core/store.js
  */
 import $ from 'jquery';
-import {createApp} from './core/app';
+import {createApp} from './app';
 const {app, router, store} = createApp();
 
 if (window.__INITIAL_STATE__) {

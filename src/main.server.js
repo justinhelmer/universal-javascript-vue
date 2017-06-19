@@ -15,7 +15,7 @@
  * @see src/main.client.js
  * @see src/core/store.js
  */
-import { createApp } from './core/app';
+import { createApp } from './app';
 
 const isDev = process.env.NODE_ENV !== 'production';
 

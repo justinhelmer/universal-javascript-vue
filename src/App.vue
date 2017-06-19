@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <header>
-            <img id="logo" src="../../assets/paragon-logo.png">
+            <img id="logo" src="./assets/paragon-logo.png">
             <ul>
                 <li v-for="link in links">
                     <router-link :to="{ name: link }">{{link | capitalize}}</router-link>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import {capitalize} from '../../lib/vue-filters';
+  import {capitalize} from './lib/vue-filters';
 
   export default {
     name: 'app',
