@@ -54,27 +54,26 @@ let $spinner = $(`
 `);
 
 function fetchAsyncData(to, from, next) {
-  const matchedComponents = router.getMatchedComponents(to);
-  const prevMatchedComponents = router.getMatchedComponents(from);
+  const matched = router.getMatchedComponents(to);
+  const prevMatched = router.getMatchedComponents(from);
 
-  // we only care about none-previously-rendered components, so we compare them until the two matched lists differ
   let diffed = false;
-  const activatedComponents = matchedComponents.filter((component, i) => {
-    return diffed || (diffed = (prevMatchedComponents[i] !== component));
+  const activated = matched.filter((c, i) => {
+    return diffed || (diffed = (prevMatched[i] !== c))
   });
 
-  if (!activatedComponents.length) {
+  const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _);
+
+  if (!asyncDataHooks.length) {
     return next();
   }
 
   $spinner.appendTo('body');
 
-  Promise.all(activatedComponents.map(Component => {
-    if (Component.asyncData) {
-      return Component.asyncData({store, route: to});
-    }
-  })).then(() => {
-    $spinner.detach();
-    next();
-  }).catch(next);
+  Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
+    .then(() => {
+      $spinner.detach();
+      next();
+    })
+    .catch(next);
 }
