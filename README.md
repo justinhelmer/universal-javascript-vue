@@ -31,8 +31,8 @@ Some of the possible reasons to choose this over something else:
      - Uglifies/minifies the final bundles using the [Webpack UglifyJS Plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
      - Uses the [ExtractTextPlugin](https://github.com/webpack-contrib/extract-text-webpack-plugin) to extract compiled CSS into a chunk
        to load the CSS bundle in parallel to the JS bundle
-
-- @TODO - Support for Hot Module Reloading
+- Full support for [HMR](https://webpack.js.org/concepts/hot-module-replacement/), with both client and server bundles configured with hot reloading
+  using [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware)
 
 ## Architecture Overview
 
