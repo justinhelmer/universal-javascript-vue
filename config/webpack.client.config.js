@@ -1,3 +1,15 @@
+/**
+ * Webpack configuration for generating the client bundle.
+ *
+ * The CommonsChunkPlugin splits the webpack runtime into a leading chunk so that async chunks can be
+ * injected right after it. This also enables better caching for app/vendor code.
+ *
+ * The VueSSRClientPlugin generates dist/vue-ssr-client-manifest.json,
+ *
+ * @see https://ssr.vuejs.org/en/build-config.html
+ * @see https://css-tricks.com/prefetching-preloading-prebrowsing/
+ */
+
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -11,18 +23,13 @@ module.exports = merge(baseConfig, {
   },
   node: {
     fs: "empty"
-  }
-  // plugins: [
-  //   // Important: this splits the webpack runtime into a leading chunk
-  //   // so that async chunks can be injected right after it.
-  //   // this also enables better caching for your app/vendor code.
-  //   new webpack.optimize.CommonsChunkPlugin({
-  //     name: 'manifest',
-  //     minChunks: Infinity
-  //   }),
-  //
-  //   // This plugins generates `vue-ssr-client-manifest.json` in the
-  //   // output directory.
-  //   new VueSSRClientPlugin()
-  // ]
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      minChunks: Infinity
+    }),
+
+    new VueSSRClientPlugin()
+  ]
 });

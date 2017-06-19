@@ -1,15 +1,15 @@
 <template>
-  <div id="app">
-    <header>
-      <img id="logo" src="../../assets/paragon-logo.png">
-      <ul>
-        <li v-for="link in links">
-          <router-link :to="{ name: link }">{{link | capitalize}}</router-link>
-        </li>
-      </ul>
-    </header>
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <header>
+            <img id="logo" src="../../assets/paragon-logo.png">
+            <ul>
+                <li v-for="link in links">
+                    <router-link :to="{ name: link }">{{link | capitalize}}</router-link>
+                </li>
+            </ul>
+        </header>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
@@ -27,35 +27,84 @@
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
 
-  h1, h2 {
-    font-weight: normal;
-  }
+    h1, h2 {
+        font-weight: normal;
+    }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
 
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
 
-  a {
-    color: #42b983;
-  }
+    a {
+        color: #42b983;
+    }
 
-  img#logo {
-    width: 80%;
-    max-width: 480px;
-  }
+    img#logo {
+        width: 80%;
+        max-width: 480px;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        margin: 100px auto;
+        top: 40%;
+        left: 50%;
+        margin-left: -20px;
+    }
+
+    .double-bounce1, .double-bounce2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #333;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+        animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes sk-bounce {
+        0%, 100% {
+            -webkit-transform: scale(0.0)
+        }
+        50% {
+            -webkit-transform: scale(1.0)
+        }
+    }
+
+    @keyframes sk-bounce {
+        0%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        }
+        50% {
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+        }
+    }
 </style>

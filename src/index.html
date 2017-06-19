@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preload" href="/dist/manifest.js" as="script">
+    <link rel="preload" href="/dist/main.js" as="script">
+
     <meta charset="utf-8">
     <title>{{ title }}</title>
   </head>
   <body>
     <!--vue-ssr-outlet-->
+    <script src="/dist/manifest.js"></script>
     <script src="/dist/main.js"></script>
   </body>
 </html>
