@@ -1,7 +1,7 @@
 {
   "name": "paragon-api-test",
   "version": "0.0.1",
-  "description": "test the capabilities of the paragon api",
+  "description": "A fully-isomorphic (universal) javascript boilerplate based on Vue.js.",
   "author": "Justin Helmer",
   "license": "MIT",
   "homepage": "https://github.com/justinhelmer/paragon-api-test#readme",
