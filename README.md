@@ -2,6 +2,19 @@
 
 A fully-isomorphic (universal) javascript boilerplate based on [Vue.js](https://vuejs.org/).
 
+## When to use this
+
+Some of the possible reasons to choose this over something else:
+
+- If you want a fully-isomorphic (universal) boilerplate that isn't too abstracted, is simple to understand, and can
+  easily and quickly be adapted to your needs (nuts-and-bolts).
+- If you have tried (or looked into) these, but found them too abstracted, or require too much boilerplate code:
+    - [Electrode](http://www.electrode.io/)
+    - [Next.js](https://zeit.co/blog/next2)
+    - [Vue](https://vuejs.org/)
+    - [Nuxt](https://nuxtjs.org/) _- Special thanks to the developers of Vue/Nuxt for articulating the building blocks of `Vue.js` so well._
+- If you don't want to use [React](https://facebook.github.io/react/) / [Redux](https://facebook.github.io/react/)
+
 ## Features
 
 - Full [Webpack 2](https://webpack.js.org/) support with [Babel](https://babeljs.io/)
@@ -11,18 +24,6 @@ A fully-isomorphic (universal) javascript boilerplate based on [Vue.js](https://
 - Support for priority asset resource [prefetching / preloading](https://www.keycdn.com/blog/resource-hints/)
 - Enable/disable server-side rendering with the [flip of a switch](#configuration)
 - @TODO - Support for Hot Module Reloading
-
-## When to use this
-
-Some of the possible reasons to choose this over something else:
-
-- If you want a fully-isomorphic (universal) boilerplate that isn't too abstracted, is simple to understand, and can
-  easily and quickly be adapted to your needs.
-- If you have tried (or looked into) these, but found them too abstracted, or require too much boilerplate code:
-    - [Electrode](http://www.electrode.io/)
-    - [Next.js](https://zeit.co/blog/next2)
-    - [Nuxt](https://nuxtjs.org/) _- Special thanks to the developers of Nuxt for articulating the building blocks of `Vue.js` so well._}
-- If you don't want to use [React](https://facebook.github.io/react/) / [Redux](https://facebook.github.io/react/)
 
 ## Setup
 
