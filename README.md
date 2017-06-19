@@ -17,12 +17,12 @@ Some of the possible reasons to choose this over something else:
 
 ## Features
 
-- Full [Webpack 2](https://webpack.js.org/) with the following optimizations:
+- Full [Webpack 2](https://webpack.js.org/) support with the following optimizations:
     - Support for [Vue](https://vuejs.org/) using [vue-loader](https://github.com/vuejs/vue-loader)
     - Support for [Babel](https://babeljs.io/) using [babel-loader](https://github.com/babel/babel-loader)
     - Uses the [CommonsChunkPlugin](https://webpack.js.org/plugins/commons-chunk-plugin/) to do the following:
         - Extracts all vendor dependencies (i.e. `node_modules`) into a chunk for better caching
-        - Extracts the webpack runtime and manifest into a chunk to avoid vendor chunk hash changing on every build
+        - Extracts the `webpack` runtime and manifest into a chunk to avoid vendor chunk hash changing on every build
 - Centralized routing using [vue-router](https://github.com/vuejs/vue-router), with a strong focus on component-based architecture (code splitting)
 - Centralized state management and DOM hydration using [Vuex](https://github.com/vuejs/vuex) and [vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
 - Centralized API proxy using [Axios](https://github.com/vuejs/vuex), with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html)
