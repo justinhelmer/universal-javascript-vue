@@ -57,7 +57,7 @@ module.exports = {
     headers: {}
   },
   template: {
-    title: 'Paragon | The Sacred Order'
+    title: 'Your App Title'
   }
 };
 ```
