@@ -1,35 +1,43 @@
+/**
+ * Webpack configuration for generating the server bundle.
+ *
+ * Externalizes vendor dependencies using webpack=node-externals
+ *
+ * The VueSSRServerPlugin turns the entire output of the server build into a single JSON file (vue-ssr-server-bundle.json)
+ *
+ * @see https://webpack.js.org/configuration/externals/#externals
+ * @see https://css-tricks.com/prefetching-preloading-prebrowsing/
+ */
+
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 const baseConfig = require('./webpack.base.config.js');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
+const webpack = require('webpack');
 
 module.exports = merge(baseConfig, {
+  target: 'node', // needed by the vue-loader
+  devtool: 'source-map',
   entry: './main.server.js',
-
   output: {
     filename: 'server.bundle.js',
-    libraryTarget: 'commonjs2' // This tells the server bundle to use Node-style exports
+    libraryTarget: 'commonjs2' // needed by the server bundle renderer
   },
 
-  // This allows webpack to handle dynamic imports in a Node-appropriate fashion, and also tells `vue-loader`
-  // to emit server-oriented code when compiling Vue components.
-  target: 'node',
-
-  // For bundle renderer source map support
-  devtool: 'source-map',
-
-  // https://webpack.js.org/configuration/externals/#function Externalize app dependencies. This makes the server
-  // build much faster and generates a smaller bundle file.
   externals: nodeExternals({
-    // do not externalize dependencies that need to be processed by webpack. you can add more file types here e.g.
-    // raw *.vue files. You should also whitelist deps that modifies `global` (e.g. polyfills)
+    // do not externalize CSS files in case we need to import it from a dep
     whitelist: /\.css$/
   }),
 
-  // This is the plugin that turns the entire output of the server build into a single JSON file.
-  // The default file name will be `vue-ssr-server-bundle.json`
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        VUE_ENV: '"server"'
+      }
+    }),
+
     new VueSSRServerPlugin()
   ]
 });

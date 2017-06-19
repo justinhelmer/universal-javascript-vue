@@ -1,27 +1,27 @@
 var path = require('path');
 var webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+
+const isProd = process.env.NODE_ENV === 'production';
 
 var config = {
-  devtool: 'source-map',
+  devtool: isProd ? false : 'cheap-module-source-map',
   context: path.resolve(__dirname, '../src'),
-  // entry: [
-    // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    // './app.js'
-  // ],
   output: {
     path: path.join(__dirname, '../dist'),
     publicPath: '/dist/',
+    filename: '[name].[chunkhash].js'
   },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ],
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          extractCSS: isProd,
+          preserveWhitespace: false
+        }
       },
       {
         test: /\.js$/,
@@ -32,11 +32,38 @@ var config = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
+          limit: 10000,
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css$/,
+        use: isProd
+          ? ExtractTextPlugin.extract({
+            use: 'css-loader?minimize',
+            fallback: 'vue-style-loader'
+          })
+          : ['vue-style-loader', 'css-loader']
       }
     ]
-  }
+  },
+  performance: {
+    maxEntrypointSize: 300000,
+    hints: isProd ? 'warning' : false
+  },
+  plugins: isProd
+    ? [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false }
+      }),
+
+      new ExtractTextPlugin({
+        filename: 'common.[chunkhash].css'
+      })
+    ]
+    : [
+      new FriendlyErrorsPlugin()
+    ]
 };
 
 module.exports = config;
