@@ -80,6 +80,7 @@ module.exports = function (server) {
           res.status(500).end('Internal Server Error');
         }
 
+        console.log(req.method, req.url);
         console.error(err.stack || err);
       } else {
         res.end(html);

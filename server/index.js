@@ -24,8 +24,6 @@ const enableStaticFileServer = () => {
   server.use('/public', serve('../public', true));
 };
 
-
-
 if (config.proxy) {
   enableProxyServer();
 }
