@@ -5,7 +5,8 @@
  *   - extracts all vendor dependencies (i.e. node_modules) into a chunk for better caching
  *   - extracts the webpack runtime and manifest into a chunk to avoid vendor chunk hash changing on every build
  *
- * The VueSSRClientPlugin generates dist/vue-ssr-client-manifest.json
+ * The VueSSRClientPlugin generates dist/vue-ssr-client-manifest.json, to allow for preloading and prefetching
+ * of priority assets.
  *
  * @see https://ssr.vuejs.org/en/build-config.html
  * @see https://css-tricks.com/prefetching-preloading-prebrowsing/

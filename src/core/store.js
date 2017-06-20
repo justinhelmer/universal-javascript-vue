@@ -8,29 +8,30 @@ Vue.use(Vuex);
 export function createStore () {
   return new Vuex.Store({
     state: {
-      items: {}
+      items: []
     },
     actions: {
-      fetch({commit}, endpoint = 'MISSING_ENDPOINT', id) {
+      fetch({commit}, options) {
         const base = config.proxy.base || '/api';
 
-        let uri = 'http://localhost:3000' + base + '/' + endpoint;
+        let uri = 'http://localhost:3000' + base + '/' + options.endpoint;
 
-        if (id) {
-          uri += '/' + id;
+        if (options.id) {
+          uri += '/' + options.id;
         }
 
         return axios.get(uri)
             .then(function (response) {
-              if (id) {
-                commit('setItem', { id, item: response.data });
+              if (options.id) {
+                commit('setItem', {
+                  id: options.id,
+                  item: response.data
+                });
               } else {
                 commit('replaceItems', response.data);
               }
             })
-            .catch(function (error) {
-              console.log(error);
-            });
+            .catch(error => console.log(error));
       }
     },
     getters: {
@@ -41,7 +42,7 @@ export function createStore () {
         const idx = state.items.find(item => item.id === id);
 
         if (idx) {
-          Vue.set(state.items, idx, item);
+          state.items[idx] = item;
         } else {
           state.items.push(item);
         }

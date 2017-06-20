@@ -1,28 +1,23 @@
 <template>
     <div id="app">
         <header>
-            <img id="logo" src="/public/logo.png">
-            <ul>
-                <li v-for="link in links">
-                    <router-link :to="{ name: link }">{{link | capitalize}}</router-link>
-                </li>
-            </ul>
+            <a href="/"><img id="logo" src="/public/logo.png"></a>
+            <div id="title">{{title}}</div>
         </header>
-        <router-view></router-view>
+        <main><router-view></router-view></main>
     </div>
 </template>
 
 <script>
-  import {capitalize} from './lib/vue-filters';
+  const config = require('../config');
 
   export default {
     name: 'app',
     data () {
       return {
-        links: ['home', 'heroes', 'cards']
+        title: config.template.title
       }
-    },
-    filters: {capitalize}
+    }
   }
 </script>
 
@@ -34,6 +29,11 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+    }
+
+    #title {
+        font-size: 30px;
+        margin: 20px;
     }
 
     h1, h2 {

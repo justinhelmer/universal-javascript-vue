@@ -6,7 +6,9 @@ const server = express();
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
 
-const enableProxyServer = () => require('./proxy')(server);
+const enableAppServer = () => require('./app-server')(server);
+const enableProxyServer = () => require('./proxy/index')(server);
+const startServer = () => server.listen(3000);
 
 const enableStaticFileServer = () => {
   server.use([
@@ -22,15 +24,7 @@ const enableStaticFileServer = () => {
   server.use('/public', serve('../public', true));
 };
 
-const enableAppServer = () => require('./app-server')(server);
 
-const startServer = () => {
-  const port = process.env.PORT || 3000;
-
-  server.listen(port, () => {
-    console.log(`server started at localhost:${port}`);
-  });
-};
 
 if (config.proxy) {
   enableProxyServer();

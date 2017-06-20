@@ -62,7 +62,11 @@ var config = {
       })
     ]
     : [
-      new FriendlyErrorsPlugin()
+      new FriendlyErrorsPlugin({
+        compilationSuccessInfo: {
+          messages: ['You application is running at http://localhost:3000'],
+        }
+      })
     ]
 };
 

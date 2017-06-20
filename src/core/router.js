@@ -24,19 +24,14 @@ export function createRouter () {
         component: () => import('../components/Home.vue')
       },
       {
-        name: 'heroes',
-        path: '/heroes',
-        component: () => import('../components/Heroes.vue')
+        name: 'items',
+        path: '/items',
+        component: () => import('../components/Items.vue')
       },
       {
-        name: 'hero',
-        path: '/hero/:id',
-        component: () => import('../components/Hero.vue')
-      },
-      {
-        name: 'cards',
-        path: '/cards',
-        component: () => import('../components/Cards.vue')
+        name: 'item',
+        path: '/items/:id',
+        component: () => import('../components/Item.vue')
       }
     ]
   });

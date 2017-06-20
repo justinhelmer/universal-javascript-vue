@@ -10,7 +10,7 @@ An example application using [Universal Javascript - Vue](https://github.com/jus
 # install dependencies
 npm install
 
-# serve in dev mode, with hot reload at localhost:3000 (or `process.env.PORT`)
+# serve in dev mode, with hot reload at localhost:3000
 npm run dev
 
 # build for production
@@ -26,20 +26,22 @@ The following config properties (`config/index.js`) are recognized by the boiler
 
 ```js
 module.exports = {
-  // The API proxy will be enabled if this configuration object exists
+  // object passed to index.template.html
+  template: {
+    title: 'Your App Title'
+  },
+
+  // the API proxy will be enabled if this configuration object exists
   proxy: {
     // HTTP requests made within the application code that begin
     // with this base will be proxied. defaults to '/api' if not set
     base: '/api',
 
-    // The target URL, for proxied requests
+    // target URL, for proxied requests
     target: 'https://api.example-host.com',
 
-    // Headers to pass along to the proxy server
+    // headers to pass along to the proxy server
     headers: {}
-  },
-  template: {
-    title: 'Your App Title'
   }
 };
 ```
