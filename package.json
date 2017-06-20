@@ -1,16 +1,16 @@
 {
-  "name": "paragon-api-test",
+  "name": "universal-javascript-vue-example",
   "version": "0.0.1",
-  "description": "A fully-isomorphic (universal) javascript boilerplate based on Vue.js.",
+  "description": "An example application using universal-javascript-vue.",
   "author": "Justin Helmer",
   "license": "MIT",
-  "homepage": "https://github.com/justinhelmer/paragon-api-test#readme",
+  "homepage": "https://github.com/justinhelmer/universal-javascript-vue-example#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justinhelmer/paragon-api-test.git"
+    "url": "git+https://github.com/justinhelmer/universal-javascript-vue-example.git"
   },
   "bugs": {
-    "url": "https://github.com/justinhelmer/paragon-api-test/issues"
+    "url": "https://github.com/justinhelmer/universal-javascript-vue-example/issues"
   },
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,14 @@
     "start": "cross-env NODE_ENV=production node server"
   },
   "keywords": [
-    "paragon"
+    "universal",
+    "isomorphic",
+    "javascript",
+    "babel",
+    "es6",
+    "ssr",
+    "server side rendering",
+    "vue"
   ],
   "dependencies": {
     "axios": "^0.16.2",

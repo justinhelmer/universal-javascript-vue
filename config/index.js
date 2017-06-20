@@ -2,12 +2,10 @@ require('dotenv').load();
 
 module.exports = {
   proxy: {
-    target: 'https://developer-paragon.epicgames.com',
-    headers: {
-      'X-Epic-ApiKey': process.env.EPIC_API_KEY
-    }
+    target: '',
+    headers: {}
   },
   template: {
-    title: 'Paragon | The Sacred Order'
+    title: 'Universal JavaScript - Vue'
   }
 };
