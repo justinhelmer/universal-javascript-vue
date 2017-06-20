@@ -28,10 +28,8 @@
   }
 </script>
 
-<style lang="scss">
-    #items {
-        .link {
-            color: black;
-        }
+<style lang="scss" scoped>
+    .link {
+        color: black;
     }
 </style>

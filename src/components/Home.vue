@@ -11,10 +11,8 @@
   }
 </script>
 
-<style lang="scss">
-    #home {
-        .link {
-            color: green;
-        }
+<style lang="scss" scoped>
+    .link {
+        color: green;
     }
 </style>

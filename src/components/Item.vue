@@ -24,10 +24,8 @@
   }
 </script>
 
-<style lang="scss">
-    #item {
-        .link {
-            color: red;
-        }
+<style lang="scss" scoped>
+    .link {
+        color: red;
     }
 </style>
