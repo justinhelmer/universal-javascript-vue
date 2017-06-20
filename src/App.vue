@@ -1,8 +1,10 @@
 <template>
     <div id="app">
         <header>
-            <a href="/"><img id="logo" src="/public/logo.png"></a>
-            <div id="title">{{title}}</div>
+            <router-link :to="{ name: 'home' }">
+                <img src="/public/logo.png" :class="linkClass">
+            </router-link>
+            <div class="title">{{title}}</div>
         </header>
         <main><router-view></router-view></main>
     </div>
