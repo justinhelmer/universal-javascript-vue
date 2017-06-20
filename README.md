@@ -41,7 +41,10 @@ module.exports = {
     target: 'https://api.example-host.com',
 
     // headers to pass along to the proxy server
-    headers: {}
+    headers: {},
+
+    // mock the api data
+    mock: true
   }
 };
 ```
