@@ -3,8 +3,7 @@
         <h1>Items</h1>
         <ul>
             <li v-for="item in items">
-                <router-link :to="{ name: 'item', params: { id: item.id } }" class="link">{{item.title}}
-                </router-link>
+                <router-link :to="{ name: 'item', params: { id: item.id } }" class="link">{{item.title}}</router-link>
             </li>
         </ul>
     </div>

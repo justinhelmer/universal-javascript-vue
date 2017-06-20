@@ -40,15 +40,21 @@ var config = {
         test: /\.s?css$/,
         use: isProd
           ? ExtractTextPlugin.extract({
-            use: 'vue-style-loader!css-loader?minimize&modules&importLoaders=1!sass-loader',
+            use: [{
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 1,
+                minimize: true
+              }
+            }, 'sass-loader'],
             fallback: 'vue-style-loader'
           })
           : ['vue-style-loader', {
               loader: 'css-loader',
               options: {
                 modules: true,
-                importLoaders: 1,
-                localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                importLoaders: 1
               }
             },
             'sass-loader'
