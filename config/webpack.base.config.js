@@ -37,15 +37,27 @@ var config = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: isProd
           ? ExtractTextPlugin.extract({
-            use: 'css-loader?minimize',
+            use: 'vue-style-loader!css-loader?minimize!sass-loader',
             fallback: 'vue-style-loader'
           })
-          : ['vue-style-loader', 'css-loader']
+          : ['vue-style-loader', {
+              loader: 'css-loader',
+              options: { modules: true, importLoaders: 1 }
+            },
+            'sass-loader'
+          ]
       }
     ]
+  },
+  resolveLoader: {
+    alias: {
+      // vue-loader infers the loader to use from the "lang" attribute, i.e. <style lang="scss">.
+      // Therefore we must alias scss-loader to sass-loader to process SCSS in .vue files
+      'scss-loader': 'sass-loader'
+    },
   },
   performance: {
     maxEntrypointSize: 300000,

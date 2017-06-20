@@ -1,7 +1,7 @@
 <template>
     <div id="item">
         <h1>This is {{item.title}}</h1>
-        <router-link :to="{ name: 'items' }">Back to Items</router-link>
+        <router-link :to="{ name: 'items' }" class="link">Back to Items</router-link>
     </div>
 </template>
 
@@ -23,3 +23,11 @@
     }
   }
 </script>
+
+<style lang="scss">
+    #item {
+        .link {
+            color: red;
+        }
+    }
+</style>

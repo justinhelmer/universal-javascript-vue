@@ -40,7 +40,7 @@ module.exports = merge(baseConfig, {
           // it's inside node_modules
           /node_modules/.test(module.context) &&
           // and not a CSS file (due to extract-text-webpack-plugin limitation)
-          !/\.css$/.test(module.request)
+          !/\.s?css$/.test(module.request)
         )
       }
     }),
