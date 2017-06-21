@@ -11,11 +11,3 @@
 .tertiary {
     color: blue;
 }
-
-.dark-text {
-    color: #2c3e50;
-}
-
-.link-text {
-    composes: secondary;
-}

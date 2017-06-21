@@ -70,11 +70,7 @@
     }
 
     header {
-        border-bottom: 1px solid #2c3e50;
-    }
-
-    header a {
-        display: block;
+        border-bottom: 2px solid #2c3e50;
     }
 
     main {
