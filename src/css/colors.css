@@ -1,0 +1,21 @@
+/*@value primary: #BF4040;*/
+
+.primary {
+    color: #BF4040;
+}
+
+.secondary {
+    color: green;
+}
+
+.tertiary {
+    color: blue;
+}
+
+.dark-text {
+    color: #2c3e50;
+}
+
+.link-text {
+    composes: secondary;
+}

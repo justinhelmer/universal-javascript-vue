@@ -2,62 +2,82 @@
     <div id="app">
         <header>
             <router-link :to="{ name: 'home' }">
-                <img src="/public/logo.png" :class="linkClass">
+                <img src="/public/logo.png" :class="$style.logo">
             </router-link>
-            <div class="title">{{title}}</div>
+            <div :class="[css.layout.marginNormal, css.typography.xxLarge]">{{title}}</div>
         </header>
-        <main><router-view></router-view></main>
+        <main>
+            <router-view></router-view>
+        </main>
     </div>
 </template>
 
 <script>
   const config = require('../config');
 
-  // example using CSS modules https://glenmaddern.com/articles/css-modules
-  import styles from './App.css';
+  import { marginNormal } from './css/layout.css';
+  import { xxLarge } from './css/typography.css';
 
   export default {
     name: 'app',
     data () {
       return {
         title: config.template.title,
-        linkClass: styles.scaled
+        css: {
+          layout: { marginNormal },
+          typography: { xxLarge }
+        }
       }
     }
   }
 </script>
 
-<style lang="scss">
-    // example using SASS http://sass-lang.com/
+<style module>
+    .logo {
+        max-width: 320px;
+        width: 100%;
+    }
+</style>
+
+<style>
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-
-        .title {
-            font-size: 30px;
-            margin: 20px;
-        }
     }
 
-    h1, h2 {
+    h1 {
+        font-size: 32px;
+        font-weight: normal;
+    }
+
+    h2 {
+        font-size: 20px;
         font-weight: normal;
     }
 
     ul {
         list-style-type: none;
         padding: 0;
+    }
 
-        li {
-            display: inline-block;
-            margin: 0 10px;
-        }
+    li {
+        display: inline-block;
+        margin: 0 10px;
     }
 
     a {
-        color: #42b983;
+        color: #2c3e50;
+    }
+
+    header {
+        border-bottom: 1px solid #2c3e50;
+    }
+
+    header a {
+        display: block;
+    }
+
+    main {
+        margin: 40px;
     }
 </style>

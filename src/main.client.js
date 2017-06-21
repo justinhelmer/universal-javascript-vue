@@ -46,10 +46,12 @@ router.onReady(() => {
  * @see https://ssr.vuejs.org/en/data.html
  * @see https://router.vuejs.org/en/api/router-instance.html
  */
+import spinner from './css/spinner.css';
+
 let $spinner = $(`
-  <div class="spinner">
-      <div class="double-bounce1"></div>
-      <div class="double-bounce2"></div>
+  <div class="${spinner.wrapper}">
+      <div class="${spinner.doubleBounce1}"></div>
+      <div class="${spinner.doubleBounce2}"></div>
   </div>
 `);
 

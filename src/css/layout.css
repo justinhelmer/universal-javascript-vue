@@ -1,0 +1,23 @@
+.margin-small {
+    margin: 10px;
+}
+
+.margin-normal {
+    margin: 20px;
+}
+
+.margin-large {
+    margin: 40px;
+}
+
+.padding-small {
+    padding: 10px;
+}
+
+.padding-normal {
+    padding: 20px;
+}
+
+.padding-large {
+    padding: 40px;
+}

@@ -4,12 +4,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
+const resolve = file => path.resolve(__dirname, file);
 
 var config = {
   devtool: isProd ? false : 'cheap-module-source-map',
-  context: path.resolve(__dirname, '../src'),
+  context: resolve('../src'),
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: resolve('../dist'),
     publicPath: '/dist/',
     filename: '[name].[chunkhash].js'
   },
@@ -19,8 +20,13 @@ var config = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          cssSourceMap: !isProd,
+          cssModules: {
+            localIdentName: '[path][name]---[local]---[hash:base64:5]',
+            camelCase: 'dashesOnly'
+          },
           extractCSS: isProd,
-          preserveWhitespace: false
+          preserveWhitespace: !isProd
         }
       },
       {
@@ -36,38 +42,8 @@ var config = {
           name: '[name].[ext]?[hash]'
         }
       },
-      {
-        test: /\.s?css$/,
-        use: isProd
-          ? ExtractTextPlugin.extract({
-            use: [{
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                importLoaders: 1,
-                minimize: true
-              }
-            }, 'sass-loader'],
-            fallback: 'vue-style-loader'
-          })
-          : ['vue-style-loader', {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                importLoaders: 1
-              }
-            },
-            'sass-loader'
-          ]
-      }
+      require('./css-loader.config')
     ]
-  },
-  resolveLoader: {
-    alias: {
-      // vue-loader infers the loader to use from the "lang" attribute, i.e. <style lang="scss">.
-      // Therefore we must alias scss-loader to sass-loader to process SCSS in .vue files
-      'scss-loader': 'sass-loader'
-    },
   },
   performance: {
     maxEntrypointSize: 300000,
