@@ -2,11 +2,17 @@
 
 An example application using [Universal Javascript - Vue](https://github.com/justinhelmer/universal-javascript-vue).
 
+## Installation
+
+```bash
+npm install universal-javascript-vue-example
+```
+
 ## Setup
 
 **Requires Node.js 6+**
 
-``` bash
+```bash
 # install dependencies
 npm install
 
