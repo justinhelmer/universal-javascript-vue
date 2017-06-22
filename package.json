@@ -1,6 +1,6 @@
 {
   "name": "universal-javascript-vue-example",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "An example application using universal-javascript-vue.",
   "author": "Justin Helmer",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/justinhelmer/universal-javascript-vue-example.git"
   },
   "bugs": {
-    "url": "https://github.com/justinhelmer/universal-javascript-vue-example/issues"
+    "url": "https://github.com/justinhelmer/universal-javascript-vue/issues"
   },
   "main": "index.js",
   "scripts": {
