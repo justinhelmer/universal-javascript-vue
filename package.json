@@ -1,6 +1,6 @@
 {
   "name": "universal-javascript-vue-example",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "An example application using universal-javascript-vue.",
   "author": "Justin Helmer",
   "license": "MIT",
@@ -65,6 +65,7 @@
     "postcss-cssnext": "^2.11.0",
     "postcss-icss-values": "^2.0.1",
     "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.6",
     "postcss-mixins": "^6.0.0",
     "rimraf": "^2.6.1",
     "vue-loader": "^12.2.1",
