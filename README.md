@@ -46,8 +46,11 @@ In addition:
 
 ## Installation
 
+Scaffold new projects using the [Yeoman](http://yeoman.io/) generator:
+
 ```bash
-npm install universal-javascript-vue
+npm install -g yo
+yo universal-javascript-vue
 ```
 
 ## Setup
