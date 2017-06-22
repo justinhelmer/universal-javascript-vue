@@ -1,23 +1,11 @@
-.margin-small {
-    margin: 10px;
-}
+@value base: 1rem * 1.25;
 
-.margin-normal {
-    margin: 20px;
-}
+@value small: calc(base / 2);
+@value normal: base;
+@value large: calc(base * 2);
 
-.margin-large {
-    margin: 40px;
-}
+.margin-small { margin: small; }
+.margin-normal { margin: normal; }
+.margin-large { margin: large; }
 
-.padding-small {
-    padding: 10px;
-}
-
-.padding-normal {
-    padding: 20px;
-}
-
-.padding-large {
-    padding: 40px;
-}
+.margin-bottom-small {  margin-bottom: small;  }

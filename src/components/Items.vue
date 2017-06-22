@@ -1,9 +1,9 @@
 <template>
     <div id="items">
         <h1>Items</h1>
-        <div :class="$style.element">secondary color</div>
+        <div :class="[css.layout.marginBottomSmall, css.colors.colorSecondary]">secondary color</div>
         <ul>
-            <li v-for="item in items">
+            <li v-for="item in items" :class="$style.list">
                 <router-link :to="{ name: 'item', params: { id: item.id } }">{{item.title}}</router-link>
             </li>
         </ul>
@@ -11,6 +11,10 @@
 </template>
 
 <script>
+  // an example of styling a component via JS using CSS Modules, importing only the used CSS
+  import { marginBottomSmall } from '../css/layout.css';
+  import { colorSecondary } from '../css/colors.css';
+
   export default {
     name: 'items',
 
@@ -18,6 +22,15 @@
       return store.dispatch('fetch', {
         endpoint: 'items'
       });
+    },
+
+    data () {
+      return {
+        css: {
+          layout: { marginBottomSmall },
+          colors: { colorSecondary }
+        }
+      }
     },
 
     computed: {
@@ -29,16 +42,10 @@
 </script>
 
 <style module>
-    /**
-     * An example of styling a component using "composes". Note that this method is not recommended, because
-     * all loaders (and their options) inline, everywhere "composes" is used:
-     *
-     *      composes: secondary from 'postcss-loader!../css/colors.css';
-     *
-     * @see https://github.com/justinhelmer/universal-javascript-vue/issues/8
-     */
-    .element {
-        composes: secondary from 'postcss-loader!../css/colors.css';
-        composes: margin-small from 'postcss-loader!../css/layout.css';
+    @value small as m-small from '../css/layout.css';
+
+    .list {
+        display: inline-block;
+        margin: 0 m-small 0 0;
     }
 </style>

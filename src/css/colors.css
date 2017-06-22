@@ -1,13 +1,7 @@
-/*@value primary: #BF4040;*/
+@value primary: red;
+@value secondary: green;
+@value tertiary: blue;
 
-.primary {
-    color: #BF4040;
-}
-
-.secondary {
-    color: green;
-}
-
-.tertiary {
-    color: blue;
-}
+.color-primary {  color: primary;  }
+.color-secondary {  color: secondary;  }
+.color-tertiary {  color: tertiary;  }
