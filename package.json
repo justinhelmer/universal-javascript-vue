@@ -1,13 +1,13 @@
 {
-  "name": "universal-javascript-vue-example",
-  "version": "0.5.4",
-  "description": "An example application using universal-javascript-vue.",
+  "name": "universal-javascript-vue",
+  "version": "0.6.0",
+  "description": "A fully-isomorphic (universal) ECMAScript 6 boilerplate based on Vue.js",
   "author": "Justin Helmer",
   "license": "MIT",
-  "homepage": "https://github.com/justinhelmer/universal-javascript-vue-example#readme",
+  "homepage": "https://github.com/justinhelmer/universal-javascript-vue#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justinhelmer/universal-javascript-vue-example.git"
+    "url": "git+https://github.com/justinhelmer/universal-javascript-vue.git"
   },
   "bugs": {
     "url": "https://github.com/justinhelmer/universal-javascript-vue/issues"
