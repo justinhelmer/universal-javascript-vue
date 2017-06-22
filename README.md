@@ -46,21 +46,26 @@ In addition:
 
 ## Installation
 
-Scaffold new projects using the [Yeoman](http://yeoman.io/) generator:
+**Requires Node.js 6+**
+
+Install the [Yeoman](http://yeoman.io/) generator:
 
 ```bash
 npm install -g yo
-yo universal-javascript-vue
+npm install -g generator-universal-javascript-vue
 ```
 
-## Setup
-
-**Requires Node.js 6+**
+Scaffold new projects using the generator:
 
 ```bash
-# install dependencies
+mkdir my-project; cd my-project
+yo universal-javascript-vue
 npm install
+```
 
+## Building and serving the app
+
+```bash
 # serve in dev mode, with hot reload at localhost:3000
 npm run dev
 
