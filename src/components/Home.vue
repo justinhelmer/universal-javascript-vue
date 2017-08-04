@@ -11,15 +11,11 @@
   }
 </script>
 
-<style module>
+<style lang="scss" scoped>
+    @import '../css/settings.scss';
 
-    .element {
-        color: primary;
-        margin-bottom: m-small;
-    }
-
-    .list {
-        display: inline-block;
-        margin: 0 m-small 0 0;
+    .link {
+        color: $green;
+        font-size: 20px;
     }
 </style>

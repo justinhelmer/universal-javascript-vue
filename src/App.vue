@@ -14,3 +14,10 @@
   }
 </script>
 
+<style lang="scss">
+    @import './css/settings.scss';
+
+    a, a:hover, a:visited {
+        color: $blue;
+    }
+</style>

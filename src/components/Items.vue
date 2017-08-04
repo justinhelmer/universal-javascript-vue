@@ -27,10 +27,16 @@
   }
 </script>
 
-<style module>
+<style lang="scss" scoped>
+    $list-margin: 5px;
 
-    .list {
-        display: inline-block;
-        margin: 0 m-small 0 0;
+    ul.list {
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            margin: 0 $list-margin 0 0;
+        }
     }
 </style>
