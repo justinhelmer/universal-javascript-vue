@@ -19,8 +19,8 @@
 </script>
 
 <style lang="scss">
-    @import './css/settings.scss';
-    @import 'foundation.scss';
+    @import './css/settings';
+    @import 'foundation';
     @import 'motion-ui';
 
     @include foundation-global-styles;
@@ -33,5 +33,5 @@
     @include motion-ui-transitions;
     @include motion-ui-animations;
 
-    @import 'font-awesome.scss';
+    @import 'font-awesome';
 </style>

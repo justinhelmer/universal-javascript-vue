@@ -15,7 +15,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../css/settings.scss';
+    @import '../css/settings';
 
     $black: get-color(black);
 

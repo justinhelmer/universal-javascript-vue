@@ -19,7 +19,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../../css/settings.scss';
+    @import '../../css/settings';
 
     $white: get-color(white);
 
