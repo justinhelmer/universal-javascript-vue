@@ -16,9 +16,17 @@
 
 <style lang="scss">
     @import './css/settings.scss';
+    @import 'foundation.scss';
+    @import 'motion-ui';
     @import 'font-awesome.scss';
 
-    a, a:hover, a:visited {
-        color: $blue;
-    }
+    @include foundation-global-styles;
+    @include foundation-menu;
+    @include foundation-top-bar;
+    @include foundation-xy-grid-classes;
+    @include foundation-typography;
+    @include foundation-visibility-classes;
+    @include foundation-flex-classes;
+    @include motion-ui-transitions;
+    @include motion-ui-animations;
 </style>

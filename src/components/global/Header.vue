@@ -1,6 +1,14 @@
 <template>
     <header>
-        <router-link :to="{ name: 'home' }"  class="fa fa-home fa-lg">Home</router-link>
+        <nav id="nav" class="nav top-bar">
+            <ul class="menu">
+                <li>
+                    <router-link :to="{ name: 'home' }">
+                        <i class="fa fa-home"></i><span class="show-for-medium">Home</span>
+                    </router-link>
+                </li>
+            </ul>
+        </nav>
     </header>
 </template>
 
@@ -13,10 +21,8 @@
 <style lang="scss" scoped>
     @import '../../css/settings.scss';
 
-    header {
-        a {
-            color: $green;
-            text-decoration: none;
-        }
-    }
+    $white: get-color(white);
+
+    a {  color: $white;  }
+    i {  margin-right: rem-calc(5); }
 </style>

@@ -1,7 +1,9 @@
 <template>
-    <div id="item">
-        <h1>This is {{item.title}}</h1>
-        <router-link :to="{ name: 'items' }">Back to Items</router-link>
+    <div id="item" class="grid-container grid-container-padded">
+        <div class="grid-y">
+            <h1>This is {{item.title}}</h1>
+            <router-link :to="{ name: 'items' }">Back to Items</router-link>
+        </div>
     </div>
 </template>
 

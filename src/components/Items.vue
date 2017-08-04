@@ -1,11 +1,13 @@
 <template>
-    <div id="items">
-        <h1>Items</h1>
-        <ul class="list">
-            <li v-for="item in items">
-                <router-link :to="{ name: 'item', params: { id: item.id } }">{{item.title}}</router-link>
-            </li>
-        </ul>
+    <div id="items" class="grid-container grid-container-padded">
+        <div class="grid-y">
+            <h1>Items</h1>
+            <ul class="list">
+                <li v-for="item in items">
+                    <router-link :to="{ name: 'item', params: { id: item.id } }">{{item.title}}</router-link>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
