@@ -16,18 +16,8 @@ var config = {
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          cssSourceMap: !isProd,
-          cssModules: {
-            localIdentName: '[path][name]---[local]---[hash:base64:5]'
-          },
-          extractCSS: isProd,
-          preserveWhitespace: !isProd
-        }
-      },
+      require('./vue-loader.config'),
+      require('./css-loader.config'),
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -41,7 +31,6 @@ var config = {
           name: '[name].[ext]?[hash]'
         }
       },
-      require('./css-loader.config')
     ]
   },
   performance: {
