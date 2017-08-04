@@ -21,17 +21,17 @@ export function createRouter () {
       {
         name: 'home',
         path: '/',
-        component: () => import('../components/Home.vue')
+        component: () => import('../components/home.vue')
       },
       {
         name: 'items',
         path: '/items',
-        component: () => import('../components/Items.vue')
+        component: () => import('../components/items.vue')
       },
       {
         name: 'item',
         path: '/items/:id',
-        component: () => import('../components/Item.vue')
+        component: () => import('../components/item.vue')
       }
     ]
   });
