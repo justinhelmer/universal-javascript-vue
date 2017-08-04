@@ -15,7 +15,7 @@
     @import '../css/settings.scss';
 
     .link {
-        color: $green;
+        color: $black;
         font-size: 20px;
     }
 </style>

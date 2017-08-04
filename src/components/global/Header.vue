@@ -1,8 +1,6 @@
 <template>
     <header>
-        <router-link :to="{ name: 'home' }">
-            <img src="/public/logo.png" :class="$style.logo">
-        </router-link>
+        <router-link :to="{ name: 'home' }"  class="fa fa-home fa-lg">Home</router-link>
     </header>
 </template>
 
@@ -12,6 +10,13 @@
   }
 </script>
 
-<style module>
-    .logo {  max-width: 320px;  width: 100%;  }
+<style lang="scss" scoped>
+    @import '../../css/settings.scss';
+
+    header {
+        a {
+            color: $green;
+            text-decoration: none;
+        }
+    }
 </style>

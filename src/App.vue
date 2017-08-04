@@ -16,6 +16,7 @@
 
 <style lang="scss">
     @import './css/settings.scss';
+    @import 'font-awesome.scss';
 
     a, a:hover, a:visited {
         color: $blue;
