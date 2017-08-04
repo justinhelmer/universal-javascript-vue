@@ -1,6 +1,6 @@
 <template>
     <header>
-        <nav id="nav" class="nav top-bar">
+        <nav class="top-bar">
             <ul class="menu">
                 <li>
                     <router-link :to="{ name: 'home' }">
@@ -24,5 +24,5 @@
     $white: get-color(white);
 
     a {  color: $white;  }
-    i {  margin-right: rem-calc(5); }
+    i {  margin-right: 1em; }
 </style>
