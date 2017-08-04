@@ -22,13 +22,14 @@ The following features are _centralized_, meaning they run both client-side and 
   - Centralized state management using [Vuex](https://github.com/vuejs/vuex), and DOM hydration using [vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
   - Centralized API proxy using [Axios](https://github.com/vuejs/vuex), with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html) and a built-in mock server using [JSON Server](https://github.com/typicode/json-server).
 
-
 In addition:
-- Full [Babel](https://babeljs.io/) support
-- Full [Vue](https://vuejs.org/) support
-- Full [Hot reloading (HMR)](https://webpack.js.org/concepts/hot-module-replacement/) support
-- Full [CSS Modules](https://glenmaddern.com/articles/css-modules) and [cssnext](http://cssnext.io/) support, with [variable](https://github.com/css-modules/postcss-icss-values) and [mixin](https://github.com/postcss/postcss-mixins) integration
-- Full [Webpack 2](https://webpack.js.org/) support, with the following chunk optimizations:
+- [Babel](https://babeljs.io/) support
+- [Vue](https://vuejs.org/) support
+- [Hot reloading (HMR)](https://webpack.js.org/concepts/hot-module-replacement/) support
+- [CSS Modules](https://glenmaddern.com/articles/css-modules) and [cssnext](http://cssnext.io/) support, with [SASS](http://sass-lang.com/) integration
+- [Foundation](http://foundation.zurb.com/) integration
+- [Font Awesome](http://fontawesome.io/) integration
+- [Webpack 2](https://webpack.js.org/) integration, with the following chunk optimizations:
   - Extracts all vendor dependencies (i.e. `node_modules`) into a separate chunk for better caching
   - Extracts the `webpack` runtime and manifest into a named chunk to avoid hash changing on every build
 - Support for priority asset resource [prefetching / preloading](https://www.keycdn.com/blog/resource-hints/)
