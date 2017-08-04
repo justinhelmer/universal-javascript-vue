@@ -22,7 +22,6 @@
     @import './css/settings.scss';
     @import 'foundation.scss';
     @import 'motion-ui';
-    @import 'font-awesome.scss';
 
     @include foundation-global-styles;
     @include foundation-menu;
@@ -33,4 +32,6 @@
     @include foundation-flex-classes;
     @include motion-ui-transitions;
     @include motion-ui-animations;
+
+    @import 'font-awesome.scss';
 </style>
