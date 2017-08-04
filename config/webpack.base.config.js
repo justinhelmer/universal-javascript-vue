@@ -22,8 +22,7 @@ var config = {
         options: {
           cssSourceMap: !isProd,
           cssModules: {
-            localIdentName: '[path][name]---[local]---[hash:base64:5]',
-            camelCase: 'dashesOnly'
+            localIdentName: '[path][name]---[local]---[hash:base64:5]'
           },
           extractCSS: isProd,
           preserveWhitespace: !isProd
