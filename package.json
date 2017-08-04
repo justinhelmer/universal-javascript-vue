@@ -1,6 +1,6 @@
 {
   "name": "universal-javascript-vue",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A fully-isomorphic (universal) ECMAScript 6 boilerplate based on Vue.js",
   "author": "Justin Helmer",
   "license": "MIT",

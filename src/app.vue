@@ -10,7 +10,11 @@
 
   export default {
     name: 'app',
-    components: {appHeader}
+    components: {appHeader},
+
+    beforeMount: function () {
+      require('./lib/foundation')();
+    }
   }
 </script>
 
