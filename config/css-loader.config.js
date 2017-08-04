@@ -1,7 +1,6 @@
-const clone = require('lodash.clonedeep');
+const _ = require('lodash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
-const set = require('lodash.set');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -17,8 +16,8 @@ const productionLoaders = [
   { loader: 'postcss-loader' }
 ];
 
-let devLoaders = [{ loader: 'vue-style-loader' }].concat(clone(productionLoaders));
-devLoaders.forEach(loader => set(loader, 'options.sourceMap', true));
+let devLoaders = [{ loader: 'vue-style-loader' }].concat(_.clone(productionLoaders, true));
+devLoaders.forEach(loader => _.set(loader, 'options.sourceMap', true));
 
 module.exports = {
   test: /\.css$/,
