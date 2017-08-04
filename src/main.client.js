@@ -19,7 +19,6 @@
  * @see src/main.server.js
  * @see src/core/store.js
  */
-import $ from 'jquery';
 import {createApp} from './app';
 const {app, router, store} = createApp();
 
@@ -41,20 +40,9 @@ router.onReady(() => {
  * The beforeResolve hook is called right before a navigation is confirmed, after all other guards and async
  * components have been resolved.
  *
- * Additionally adds and removes a spinner to the page during navigation
- *
  * @see https://ssr.vuejs.org/en/data.html
  * @see https://router.vuejs.org/en/api/router-instance.html
  */
-import spinner from './css/spinner.css';
-
-let $spinner = $(`
-  <div class="${spinner.wrapper}">
-      <div class="${spinner.doubleBounce1}"></div>
-      <div class="${spinner.doubleBounce2}"></div>
-  </div>
-`);
-
 function fetchAsyncData(to, from, next) {
   const matched = router.getMatchedComponents(to);
   const prevMatched = router.getMatchedComponents(from);
@@ -70,12 +58,7 @@ function fetchAsyncData(to, from, next) {
     return next();
   }
 
-  $spinner.appendTo('body');
-
   Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
-    .then(() => {
-      $spinner.detach();
-      next();
-    })
+    .then(() => next())
     .catch(next);
 }

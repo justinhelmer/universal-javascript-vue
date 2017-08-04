@@ -38,7 +38,6 @@
     "cross-env": "^5.0.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
-    "jquery": "^3.2.1",
     "lru-cache": "^4.1.1",
     "serve-favicon": "^2.4.3",
     "vue": "^2.3.4",
