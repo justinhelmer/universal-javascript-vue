@@ -1,8 +1,7 @@
 <template>
     <div id="home">
         <h1>Welcome</h1>
-        <div :class="$style.element">primary color</div>
-        <router-link :to="{ name: 'items' }">Items</router-link>
+        <router-link :to="{ name: 'items' }" class="link">Items</router-link>
     </div>
 </template>
 
@@ -13,9 +12,6 @@
 </script>
 
 <style module>
-    /* an example of styling a component via CSS using postcss-icss-values, importing only the used CSS */
-    @value primary from '../css/colors.css';
-    @value small as m-small from '../css/layout.css';
 
     .element {
         color: primary;

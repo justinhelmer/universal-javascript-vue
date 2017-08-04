@@ -1,9 +1,8 @@
 <template>
     <div id="items">
         <h1>Items</h1>
-        <div :class="[css.layout.marginBottomSmall, css.colors.colorSecondary]">secondary color</div>
-        <ul>
-            <li v-for="item in items" :class="$style.list">
+        <ul class="list">
+            <li v-for="item in items">
                 <router-link :to="{ name: 'item', params: { id: item.id } }">{{item.title}}</router-link>
             </li>
         </ul>
@@ -11,10 +10,6 @@
 </template>
 
 <script>
-  // an example of styling a component via JS using CSS Modules, importing only the used CSS
-  import { marginBottomSmall } from '../css/layout.css';
-  import { colorSecondary } from '../css/colors.css';
-
   export default {
     name: 'items',
 
@@ -22,15 +17,6 @@
       return store.dispatch('fetch', {
         endpoint: 'items'
       });
-    },
-
-    data () {
-      return {
-        css: {
-          layout: { marginBottomSmall },
-          colors: { colorSecondary }
-        }
-      }
     },
 
     computed: {
@@ -42,7 +28,6 @@
 </script>
 
 <style module>
-    @value small as m-small from '../css/layout.css';
 
     .list {
         display: inline-block;
