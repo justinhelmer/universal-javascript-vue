@@ -20,15 +20,16 @@ Some of the possible reasons to choose this over something else:
 The following features are _centralized_, meaning they run both client-side and server-side:
   - Centralized routing using [vue-router](https://github.com/vuejs/vue-router), with a strong focus on code-splitting (JS+CS+HTML components)
   - Centralized state management using [Vuex](https://github.com/vuejs/vuex), and DOM hydration using [vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
-  - Centralized API proxy using [Axios](https://github.com/vuejs/vuex), with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html) and a built-in mock server using [JSON Server](https://github.com/typicode/json-server).
+  - _(optional)_ Centralized API proxy using [Axios](https://github.com/vuejs/vuex), with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html) and a built-in mock server using [JSON Server](https://github.com/typicode/json-server).
 
 In addition:
-- [Babel](https://babeljs.io/) support
-- [Vue](https://vuejs.org/) support
-- [Hot reloading (HMR)](https://webpack.js.org/concepts/hot-module-replacement/) support
-- [CSS Modules](https://glenmaddern.com/articles/css-modules) and [cssnext](http://cssnext.io/) support, with [SASS](http://sass-lang.com/) integration
-- (optional) [Foundation](http://foundation.zurb.com/) integration
-- (optional) [Font Awesome](http://fontawesome.io/) integration
+- Full [Babel](https://babeljs.io/) support
+- Full [Vue](https://vuejs.org/) support
+- Full [Hot reloading (HMR)](https://webpack.js.org/concepts/hot-module-replacement/) support
+- Full [CSS Modules](https://glenmaddern.com/articles/css-modules) and [cssnext](http://cssnext.io/) support, with [SASS](http://sass-lang.com/) integration
+- _(optional)_ Full [Foundation](http://foundation.zurb.com/) integration
+- _(optional)_ Full [Font Awesome](http://fontawesome.io/) integration
+- _(optional)_ Full content management system (CMS) built on [KeystoneJS](http://keystonejs.com/)
 - [Webpack 2](https://webpack.js.org/) integration, with the following chunk optimizations:
   - Extracts all vendor dependencies (i.e. `node_modules`) into a separate chunk for better caching
   - Extracts the `webpack` runtime and manifest into a named chunk to avoid hash changing on every build
@@ -83,25 +84,29 @@ The following config properties (`config/index.js`) are recognized by the boiler
 
 ```js
 module.exports = {
-  // object passed to index.template.html
-  template: {
-    title: 'Your App Title'
+  title: 'Universal JavaScript - Vue',
+  client: {
+    // only applicable if using Foundation (yeoman generator option)
+    foundation: {
+      plugins: [] // JS plugins to bundle with the client
+    }
   },
+  server: {
+    port: process.env.PORT || 3000,
 
-  // the API proxy will be enabled if this configuration object exists
-  proxy: {
-    // HTTP requests made within the application code that begin
-    // with this base will be proxied. defaults to '/api' if not set
-    base: '/api',
+    // only applicable if using KeystoneJS (yeoman generator option)
+    keystone: {
+      base: '/cms',
+      mock: false
+    },
 
-    // target URL, for proxied requests
-    target: 'https://api.example-host.com',
-
-    // headers to pass along to the proxy server
-    headers: {},
-
-    // mock the api data
-    mock: true
+    // only applicable if using the API proxy (yeoman generator option)
+    proxy: {
+      base: '/api',
+      target: 'https://api.example-host.com',
+      headers: {},
+      mock: true
+    }
   }
 };
 ```
