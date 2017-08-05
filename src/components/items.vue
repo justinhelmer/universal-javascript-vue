@@ -17,7 +17,7 @@
 
     asyncData ({ store }) {
       return store.dispatch('fetch', {
-        endpoint: 'item',
+        endpoint: '/cms/item',
         store: 'items'
       });
     },
