@@ -27,8 +27,8 @@ In addition:
 - [Vue](https://vuejs.org/) support
 - [Hot reloading (HMR)](https://webpack.js.org/concepts/hot-module-replacement/) support
 - [CSS Modules](https://glenmaddern.com/articles/css-modules) and [cssnext](http://cssnext.io/) support, with [SASS](http://sass-lang.com/) integration
-- [Foundation](http://foundation.zurb.com/) integration
-- [Font Awesome](http://fontawesome.io/) integration
+- (optional) [Foundation](http://foundation.zurb.com/) integration
+- (optional) [Font Awesome](http://fontawesome.io/) integration
 - [Webpack 2](https://webpack.js.org/) integration, with the following chunk optimizations:
   - Extracts all vendor dependencies (i.e. `node_modules`) into a separate chunk for better caching
   - Extracts the `webpack` runtime and manifest into a named chunk to avoid hash changing on every build
