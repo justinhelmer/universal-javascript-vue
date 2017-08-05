@@ -1,6 +1,6 @@
 {
   "name": "universal-javascript-vue",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A fully-isomorphic (universal) ECMAScript 6 boilerplate based on Vue.js",
   "author": "Justin Helmer",
   "license": "MIT",
@@ -17,9 +17,9 @@
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js --progress --hide-modules",
-    "dev": "node server",
     "db": "mongod",
     "db:clean": "sudo rm -rf /data/db && sudo mkdir /data/db && sudo chmod -R 777 /data/db",
+    "dev": "node bin/start-all-servers",
     "start": "cross-env NODE_ENV=production node server"
   },
   "keywords": [
@@ -59,6 +59,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "font-awesome": "^4.7.0",
+    "forever-monitor": "^1.7.1",
     "foundation-sites": "^6.4.1",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "json-server": "^0.10.1",
