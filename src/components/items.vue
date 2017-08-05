@@ -4,7 +4,7 @@
             <h1>Items</h1>
             <ul class="list">
                 <li v-for="item in items">
-                    <router-link :to="{ name: 'item', params: { id: item._id } }">{{item.title}}</router-link>
+                    <router-link :to="{ name: 'item', params: { id: item._id } }">{{item.name}}</router-link>
                 </li>
             </ul>
         </div>
