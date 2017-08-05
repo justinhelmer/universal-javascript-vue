@@ -1,6 +1,6 @@
 # Universal JavaScript - Vue
 
-A fully-isomorphic (universal) ECMAScript 6 boilerplate based on [Vue.js](https://vuejs.org/).
+A fully-isomorphic (universal) ES6/ES7 boilerplate based on [Vue.js](https://vuejs.org/).
 
 > For a more complete framework based on similar technologies, consider [Nuxt](https://nuxtjs.org/).
 > If you are looking for something more nuts-and-bolts, and/or are interested in the additional [features](#features)
