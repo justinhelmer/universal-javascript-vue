@@ -1,6 +1,6 @@
 {
   "name": "universal-javascript-vue",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "A fully-isomorphic (universal) ES6/ES7 boilerplate based on Vue.js",
   "author": "Justin Helmer",
   "license": "MIT",
