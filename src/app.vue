@@ -7,13 +7,16 @@
 
 <script>
   import appHeader from './components/global/header.vue';
+  import config from '../config';
 
   export default {
     name: 'app',
     components: {appHeader},
 
     beforeMount: function () {
-      require('./lib/foundation')();
+      require('./lib/foundation')({
+        plugins: config.client.foundation.plugins || []
+      });
     }
   }
 </script>

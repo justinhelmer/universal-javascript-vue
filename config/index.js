@@ -1,5 +1,10 @@
 module.exports = {
   title: 'Universal JavaScript - Vue',
+  client: {
+    foundation: {
+      plugins: []
+    }
+  },
   server: {
     port: process.env.PORT || 3000,
     keystone: {
