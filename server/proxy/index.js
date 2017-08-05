@@ -1,40 +1,34 @@
+const _ = require('lodash');
 const axios = require('axios');
 const chalk = require('chalk');
 const config = require('../../config');
-const path = require('path');
 
-module.exports = function proxy(server) {
-  let base = config.proxy.base;
+module.exports = app => {
+  let base = _.get(config, 'server.proxy.base');
 
   if (!base) {
-    console.warn(chalk.bold.cyan('config.proxy.base') + ' is not set; assuming ' + chalk.bold.cyan('"/api"'));
+    console.warn('%s is not set; assuming "%s"', chalk.bold.cyan('config.server.proxy.base'), chalk.bold.cyan('/api'));
     base = '/api';
   }
 
-  server.all(base + '/*', require('body-parser').json());
+  app.all(base + '/*', require('body-parser').json());
 
-  config.proxy.mock ? mockapi() : api();
-
-  function mockapi() {
-    const jsonServer = require('json-server');
-    const router = jsonServer.router(path.resolve(__dirname, './db.json'));
-    server.use(base, router);
-    console.info(chalk.bold.green('all api proxy requests are being mocked'));
-  }
+  _.get(config, 'server.proxy.mock') ? require('../mockapi')(app, base) : api();
 
   function api() {
-    if (!config.proxy.target) {
-      console.error('If using the API proxy without mock enabled, config.proxy.target must be set');
+    if (!_.get(config, 'server.proxy.target')) {
+      console.error('If using the API proxy without mock enabled, config.server.proxy.target must be set');
       process.exit(1);
     }
 
-    server.all(base + '/*', function (req, res) {
-      const options = {
-        method: req.method,
-        url: config.proxy.target + '/' + req.params[0],
-        headers: Object.assign(req.method === 'POST' ? {'Content-Type': 'application/json'} : {}, config.proxy.headers || {}),
-        data: req.body
-      };
+    app.all(base + '/*', function ({method, params, body}, res) {
+      let headers = _.get(config, 'server.proxy.headers') || {};
+
+      if (method === 'POST') {
+        headers['Content-Type'] = 'application/json';
+      }
+
+      const options = { url: config.server.proxy.target + '/' + params[0], method, headers, data: body };
 
       axios(options)
         .then(function (response) {

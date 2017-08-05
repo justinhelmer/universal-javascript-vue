@@ -11,45 +11,43 @@ export function createStore () {
       items: []
     },
     actions: {
-      fetch({commit}, options) {
-        const base = config.proxy.base || '/api';
+      fetch({commit}, {endpoint, store, id, params}) {
+        let uri = endpoint;
 
-        let uri = 'http://localhost:3000' + base + '/' + options.endpoint;
-
-        if (options.id) {
-          uri += '/' + options.id;
+        if (id) {
+          uri += '/' + id;
         }
 
-        return axios.get(uri)
-            .then(function (response) {
-              if (options.id) {
-                commit('setItem', {
-                  id: options.id,
-                  item: response.data
-                });
-              } else {
-                commit('replaceItems', response.data);
-              }
-            })
-            .catch(error => console.log(error));
+        return axios.get(uri, {
+            params,
+            proxy: { port: config.server.port }
+          })
+          .then(function ({data}) {
+            if (id) {
+              commit('setItem', {store, id, data});
+            } else {
+              commit('replaceItems', {store, data});
+            }
+          })
+          .catch(error => console.log(error));
       }
     },
     getters: {
-      getItemById: state => id => state.items.find(item => item.id === id)
+      getItemById: state => (id, store) => state[store].find(item => item._id === id)
     },
     mutations: {
-      setItem (state, { id, item }) {
-        const idx = state.items.find(item => item.id === id);
+      setItem (state, { store, id, data }) {
+        const idx = state[store].findIndex(item => item._id === id);
 
-        if (idx) {
-          state.items[idx] = item;
+        if (idx > 0) {
+          state[store][idx] = data;
         } else {
-          state.items.push(item);
+          state[store].push(data);
         }
       },
 
-      replaceItems (state, items) {
-        state.items = items;
+      replaceItems (state, {store, data}) {
+        state[store] = data;
       }
     }
   });

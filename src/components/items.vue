@@ -4,7 +4,7 @@
             <h1>Items</h1>
             <ul class="list">
                 <li v-for="item in items">
-                    <router-link :to="{ name: 'item', params: { id: item.id } }">{{item.title}}</router-link>
+                    <router-link :to="{ name: 'item', params: { id: item._id } }">{{item.title}}</router-link>
                 </li>
             </ul>
         </div>
@@ -17,7 +17,8 @@
 
     asyncData ({ store }) {
       return store.dispatch('fetch', {
-        endpoint: 'items'
+        endpoint: 'item',
+        store: 'items'
       });
     },
 

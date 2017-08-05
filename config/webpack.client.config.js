@@ -26,6 +26,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        PORT: JSON.stringify(process.env.PORT || 3000),
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
         VUE_ENV: '"client"'
       }
