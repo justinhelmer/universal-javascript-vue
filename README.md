@@ -15,8 +15,7 @@ Some of the possible reasons to choose this over something else:
 - If you have tried (or looked into) these, but found them too abstracted, or require too much boilerplate code:
     - [Electrode](http://www.electrode.io/)
     - [Next.js](https://zeit.co/blog/next2)
-    - [Vue](https://vuejs.org/)
-    - [Nuxt](https://nuxtjs.org/)
+    - [Vue](https://vuejs.org/) / [Nuxt](https://nuxtjs.org/)
 - If you don't want to use [React](https://facebook.github.io/react/) / [Redux](https://facebook.github.io/react/) (see this [comparison guide](https://vuejs.org/v2/guide/comparison.html#React))
 
 ## Features
