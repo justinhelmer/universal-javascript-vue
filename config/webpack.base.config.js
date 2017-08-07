@@ -12,7 +12,7 @@ var config = {
   output: {
     path: resolve('../dist'),
     publicPath: '/dist/',
-    filename: '[name].[chunkhash].js'
+    chunkFilename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
