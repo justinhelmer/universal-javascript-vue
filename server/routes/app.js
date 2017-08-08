@@ -13,11 +13,12 @@
  * @see src/main.server.js
  */
 
-const config = require('../../config');
+const Cookies = require('universal-cookie');
 const fs = require('fs');
 const LRU = require('lru-cache');
 const path = require('path');
 const {createBundleRenderer} = require('vue-server-renderer');
+const config = require('../../config');
 
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
@@ -65,10 +66,12 @@ module.exports = app => {
 
   function render(req, res) {
     res.setHeader('Content-Type', 'text/html');
+    const cookies = new Cookies(req.headers.cookie);
 
     const context = {
       title: config.title,
-      url: req.url
+      url: req.url,
+      cookie: cookies.getAll({ doNotParse: true })
     };
 
     renderer.renderToString(context, (err, html) => {

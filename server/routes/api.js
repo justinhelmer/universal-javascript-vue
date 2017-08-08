@@ -19,16 +19,14 @@ module.exports = app => {
       next();
     });
 
-    app.get(base + '/:endpoint/:id?', [
+    // keystone DB query
+    app.get(base + '/:list/:id?', [
       (req, res, next) => {
-        console.log(req.session);
-        console.log(req.user);
-
         try {
-          res.locals.KeystoneList = keystone.list(req.params.endpoint);
+          res.locals.KeystoneList = keystone.list(req.params.list);
           next();
         } catch (e) {
-          res.status(404).send('Keystone resource "' + req.params.endpoint + '" does not exist.').end();
+          res.status(404).send('Keystone resource "' + req.params.list + '" does not exist.').end();
         }
       },
 

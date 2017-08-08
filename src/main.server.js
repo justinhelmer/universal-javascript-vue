@@ -15,14 +15,19 @@
  * @see src/main.client.js
  * @see src/core/store.js
  */
+import Cookies from 'universal-cookie';
+import Vue from 'vue';
 import { createApp } from './app';
-
-const isDev = process.env.NODE_ENV !== 'production';
 
 export default context => {
   return new Promise((resolve, reject) => {
-    const s = isDev && Date.now();
     const { app, router, store } = createApp();
+
+    Vue.use({
+      install: (Vue) => {
+        Vue.cookies = new Cookies(context.cookie);
+      }
+    });
 
     const { url } = context;
     const fullPath = router.resolve(url).route.fullPath;
@@ -44,8 +49,6 @@ export default context => {
         store,
         route: router.currentRoute
       }))).then(() => {
-        isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`);
-
         context.state = store.state;
         resolve(app);
       }).catch(reject)

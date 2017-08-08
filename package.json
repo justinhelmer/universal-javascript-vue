@@ -42,6 +42,7 @@
     "keystone": "^4.0.0-beta.5",
     "lru-cache": "^4.1.1",
     "mongodb": "^2.2.30",
+    "universal-cookie": "^2.0.8",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
     "vue-server-renderer": "^2.4.2",
