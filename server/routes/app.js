@@ -68,6 +68,17 @@ module.exports = app => {
     res.setHeader('Content-Type', 'text/html');
     const cookies = new Cookies(req.headers.cookie);
 
+    // Make UID available to the client if there is an active session
+    if (req.user) {
+      const uid = req.user._id.toString();
+
+      // this will set the cookie on the server, so that universal-cookie will parse it in main.server.js for SSR
+      cookies.set('uid', uid);
+
+      // this will set the cookie on the client
+      res.cookie('uid', uid, { httpOnly: false });
+    }
+
     const context = {
       title: config.title,
       url: req.url,
