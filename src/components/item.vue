@@ -1,7 +1,7 @@
 <template>
     <div id="item" class="content">
         <h1>This is {{item.name}}</h1>
-        <router-link :to="{ name: 'items' }">Back to Items</router-link>
+        <router-link :to="{ name: 'items' }" class="button">Back to Items</router-link>
     </div>
 </template>
 
