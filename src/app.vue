@@ -37,4 +37,19 @@
     @include motion-ui-animations;
 
     @import 'font-awesome';
+
+    h1 {
+        border-bottom: $hr-border;
+    }
+
+    .content {
+        background: $white;
+        border: 1px solid $light-gray;
+        max-width: $global-width;
+        margin: 0 auto;
+
+        @include -zf-breakpoint-value('auto', $grid-container-padding) {
+            padding: rem-calc($-zf-bp-value) / 2
+        }
+    }
 </style>

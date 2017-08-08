@@ -1,10 +1,8 @@
 <template>
-    <div id="home" class="grid-container grid-container-padded">
-        <div class="grid-y">
-            <h1>Welcome</h1>
+    <div id="home" class="content">
+        <h1>Welcome</h1>
 
-            <router-link :to="{ name: 'items' }" class="link">Items</router-link>
-        </div>
+        <router-link :to="{ name: 'items' }">Items</router-link>
     </div>
 </template>
 
@@ -13,14 +11,3 @@
     name: 'home'
   }
 </script>
-
-<style lang="scss" scoped>
-    @import '../css/settings';
-
-    $black: get-color(black);
-
-    .link {
-        color: $black;
-        font-size: 20px;
-    }
-</style>

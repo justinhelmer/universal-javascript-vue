@@ -73,7 +73,8 @@ $light-gray: rgba(0,0,0,0.1);
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: rgba(0,0,0,0.8);
-$white: #fafafa;
+$white: #fefefe;
+$whiteish: #fafafa;
 
 $foundation-palette: (
         primary: #1385e5,
@@ -85,10 +86,11 @@ $foundation-palette: (
         blue: #1385e5,
         gray: $light-gray,
         black: $black,
-        white: $white
+        white: $white,
+        whiteish: $whiteish
 );
 
-$body-background: $white;
+$body-background: $whiteish;
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
@@ -146,7 +148,7 @@ $header-lineheight: 1.4;
 $header-margin-bottom: $global-margin;
 $header-styles: (
         small: (
-                'h1': ('font-size': 24, 'margin-top': 20),
+                'h1': ('font-size': 24),
                 'h2': ('font-size': 20),
                 'h3': ('font-size': 19),
                 'h4': ('font-size': 18),
@@ -862,7 +864,7 @@ $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
         small: 20px,
-        medium: 30px
+        medium: 40px
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
