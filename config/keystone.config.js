@@ -11,6 +11,7 @@ module.exports = {
 
   'port': config.port,
   'session': true,
+  'session store': 'mongo',
   'auth': true,
   'user model': 'user',
   'cookie secret': '24634sdfhsdfgh346y34',
