@@ -49,7 +49,7 @@
         margin: 0 auto;
 
         @include -zf-breakpoint-value('auto', $grid-container-padding) {
-            padding: rem-calc($-zf-bp-value) / 2
+            padding: 0 rem-calc($-zf-bp-value) / 2
         }
     }
 </style>
