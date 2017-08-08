@@ -88,28 +88,15 @@ The following config properties (`config/index.js`) are recognized by the boiler
 ```js
 module.exports = {
   title: 'Universal JavaScript - Vue',
-  client: {
-    // only applicable if using Foundation (yeoman generator option)
-    foundation: {
-      plugins: [] // JS plugins to bundle with the client
-    }
+  port: process.env.PORT || 3000,
+  api: {
+    base: '/api',
+    mock: false
   },
-  server: {
-    port: process.env.PORT || 3000,
 
-    // only applicable if using KeystoneJS (yeoman generator option)
-    keystone: {
-      base: '/cms',
-      mock: false
-    },
-
-    // only applicable if using the API proxy (yeoman generator option)
-    proxy: {
-      base: '/api',
-      target: 'https://api.example-host.com',
-      headers: {},
-      mock: true
-    }
+  // only applicable if using Foundation (yeoman generator option)
+  foundation: {
+    plugins: [] // JS plugins to bundle with the client
   }
 };
 ```

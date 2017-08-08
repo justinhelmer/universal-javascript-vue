@@ -1,21 +1,11 @@
 module.exports = {
   title: 'Universal JavaScript - Vue',
-  client: {
-    foundation: {
-      plugins: []
-    }
+  port: process.env.PORT || 3000,
+  api: {
+    base: '/api',
+    mock: false
   },
-  server: {
-    port: process.env.PORT || 3000,
-    keystone: {
-      base: '/cms',
-      mock: false
-    },
-    proxy: {
-      base: '/api',
-      target: '',
-      headers: {},
-      mock: true
-    }
+  foundation: {
+    plugins: []
   }
 };

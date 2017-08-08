@@ -1,5 +1,16 @@
 {
-  "item": [
+  "users": [
+    {
+      "_id": "1",
+      "name": {
+        "first": "Admin",
+        "last": "User"
+      },
+      "email": "admin@admin.com",
+      "canAccessKeystone": true
+    }
+  ],
+  "items": [
     {
       "_id": "1",
       "name": "Item 1"

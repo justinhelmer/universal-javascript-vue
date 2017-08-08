@@ -9,7 +9,7 @@ module.exports = {
   'updates': path.resolve(__dirname, '../server/keystone/updates'),
   'auto update': true,
 
-  'port': config.server.port,
+  'port': config.port,
   'session': true,
   'auth': true,
   'user model': 'user',

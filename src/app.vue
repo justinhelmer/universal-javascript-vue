@@ -15,7 +15,7 @@
 
     beforeMount: function () {
       require('./lib/foundation')({
-        plugins: config.client.foundation.plugins || []
+        plugins: config.foundation.plugins || []
       });
     }
   }

@@ -12,7 +12,8 @@ export function createStore () {
     },
     actions: {
       fetch({commit}, {endpoint, store, id, params}) {
-        let uri = endpoint;
+        const base = config.api.base || '/api';
+        let uri = base + '/' + endpoint;
 
         if (id) {
           uri += '/' + id;
@@ -20,7 +21,7 @@ export function createStore () {
 
         return axios.get(uri, {
             params,
-            proxy: { port: config.server.port }
+            proxy: { port: config.port }
           })
           .then(function ({data}) {
             if (id) {
