@@ -9,10 +9,10 @@ module.exports = app => {
     base = '/api';
   }
 
-  if (config.api.mock) {
+  if (config.api.mock && process.env.NODE_ENV !== 'production') {
     require('../../mockapi')(app, base);
   } else {
     require('./user')(app, base);
-    require('./keystone')(app, base);
+    require('./query')(app, base);
   }
 };
