@@ -4,7 +4,7 @@
         <h3>Email address</h3>
         <div>{{user.email}}</div>
         <hr/>
-        <a v-if="user.canAccessKeystone" href="/keystone" class="button">Admin Dashboard</a>
+        <a v-if="user.canAccessKeystone" href="/keystone/signin" class="button">Admin Dashboard</a>
     </div>
 </template>
 
