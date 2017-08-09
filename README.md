@@ -23,7 +23,7 @@ Some of the possible reasons to choose this over something else:
 The following features are _centralized_, meaning they run both client-side and server-side:
   - Centralized routing using [vue-router](https://github.com/vuejs/vue-router), with a strong focus on code-splitting (JS+CS+HTML components)
   - Centralized state management using [Vuex](https://github.com/vuejs/vuex), and DOM hydration using [vuex-router-sync](https://github.com/vuejs/vuex-router-sync)
-  - _(optional)_ Centralized API proxy using [Axios](https://github.com/vuejs/vuex), with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html) and a built-in mock server using [JSON Server](https://github.com/typicode/json-server).
+  - Centralized API interface with ready-to-go [data prefetching](https://ssr.vuejs.org/en/data.html) and a built-in mock server using [JSON Server](https://github.com/typicode/json-server).
 
 In addition:
 - Full [Babel](https://babeljs.io/) support
@@ -32,7 +32,7 @@ In addition:
 - Full [CSS Modules](https://glenmaddern.com/articles/css-modules) and [cssnext](http://cssnext.io/) support, with [SASS](http://sass-lang.com/) integration
 - _(optional)_ Full [Foundation](http://foundation.zurb.com/) integration
 - _(optional)_ Full [Font Awesome](http://fontawesome.io/) integration
-- _(optional)_ Full content management system (CMS) built on [KeystoneJS](http://keystonejs.com/)
+- _(optional)_ Full content management system (CMS) built on [KeystoneJS](http://keystonejs.com/), with buit-in API routes for authenticating and retrieving data
 - [Webpack 2](https://webpack.js.org/) integration, with the following chunk optimizations:
   - Extracts all vendor dependencies (i.e. `node_modules`) into a separate chunk for better caching
   - Extracts the `webpack` runtime and manifest into a named chunk to avoid hash changing on every build
@@ -80,6 +80,23 @@ npm run build
 # serve in production mode
 npm start
 ```
+
+When serving in **production* mode, the assumption is that a `mongo` instance is already running, at the url specified by `config/keystone.config.js`:
+
+```js
+module.exports = {
+  // ...
+  'mongo': 'mongodb://localhost:27017/' + pkg.name,
+  // ...
+};
+```
+
+You can also launch the local `mongo` instance using:
+
+```bash
+npm run db
+```
+> Simply an alias for `mongod`
 
 ## Configuration
 
