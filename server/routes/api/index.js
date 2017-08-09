@@ -10,7 +10,7 @@ module.exports = app => {
   }
 
   if (config.api.mock) {
-    require('../../mockapi');
+    require('../../mockapi')(app, base);
   } else {
     require('./user')(app, base);
     require('./keystone')(app, base);
