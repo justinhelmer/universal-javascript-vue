@@ -33,7 +33,7 @@ In addition:
 - Full [PostCSS](http://postcss.org/) integration, with [cssnext](http://cssnext.io/) and [cssnano](http://cssnano.co/) support
 - _(optional)_ Full [Foundation](http://foundation.zurb.com/) integration
 - _(optional)_ Full [Font Awesome](http://fontawesome.io/) integration
-- _(optional)_ Full content management system (CMS) built on [KeystoneJS](http://keystonejs.com/), with buit-in API routes for authenticating and retrieving data
+- _(optional)_ Full content management system (CMS) built on [KeystoneJS](http://keystonejs.com/), including API routes for authenticating and retrieving data
 - [Webpack 2](https://webpack.js.org/) integration, with the following chunk optimizations:
   - Extracts all vendor dependencies (i.e. `node_modules`) into a separate chunk for better caching
   - Extracts the `webpack` runtime and manifest into a named chunk to avoid hash changing on every build
