@@ -81,7 +81,7 @@ npm run build
 npm start
 ```
 
-When serving in **production* mode, the assumption is that a `mongo` instance is already running, at the url specified by `config/keystone.config.js`:
+When serving in **production** mode, the assumption is that a `mongo` instance is already running, at the url specified by `config/keystone.config.js`:
 
 ```js
 module.exports = {
@@ -91,7 +91,7 @@ module.exports = {
 };
 ```
 
-You can also launch the local `mongo` instance using:
+You can also launch the a local `mongo` instance using:
 
 ```bash
 npm run db
