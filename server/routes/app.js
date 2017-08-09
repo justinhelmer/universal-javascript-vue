@@ -55,7 +55,7 @@ module.exports = app => {
     renderer = createRenderer(bundle, {clientManifest});
   } else {
     // setup the dev server with watch and hot-reload, and create a new renderer on bundle / index template update.
-    enableHMR = require('../hmr')(app, (bundle, options) => {
+    enableHMR = require('../lib/hmr')(app, (bundle, options) => {
       renderer = createRenderer(bundle, options);
     });
   }

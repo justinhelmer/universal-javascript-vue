@@ -1,8 +1,8 @@
 const MFS = require('memory-fs');
 const path = require('path');
 const webpack = require('webpack');
-const clientConfig = require('../config/webpack.client.config');
-const serverConfig = require('../config/webpack.server.config');
+const clientConfig = require('../../config/webpack.client.config');
+const serverConfig = require('../../config/webpack.server.config');
 
 const readFile = (fs, file) => {
   try {
