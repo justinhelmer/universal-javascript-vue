@@ -29,7 +29,8 @@ In addition:
 - Full [Babel](https://babeljs.io/) support
 - Full [Vue](https://vuejs.org/) support
 - Full [Hot reloading (HMR)](https://webpack.js.org/concepts/hot-module-replacement/) support
-- Full [CSS Modules](https://glenmaddern.com/articles/css-modules) and [cssnext](http://cssnext.io/) support, with [SASS](http://sass-lang.com/) integration
+- Full [CSS Modules](https://glenmaddern.com/articles/css-modules) support, with [SASS](http://sass-lang.com/) integration
+- Full [PostCSS](http://postcss.org/) integration, with [cssnext](http://cssnext.io/) and [cssnano](http://cssnano.co/) support
 - _(optional)_ Full [Foundation](http://foundation.zurb.com/) integration
 - _(optional)_ Full [Font Awesome](http://fontawesome.io/) integration
 - _(optional)_ Full content management system (CMS) built on [KeystoneJS](http://keystonejs.com/), with buit-in API routes for authenticating and retrieving data
@@ -81,6 +82,8 @@ npm run build
 npm start
 ```
 
+#### If using [KeystoneJS](http://keystonejs.com/) (yeoman generator option):
+
 When serving in **production** mode, the assumption is that a `mongo` instance is already running, at the url specified by `config/keystone.config.js`:
 
 ```js
@@ -117,6 +120,13 @@ module.exports = {
   }
 };
 ```
+
+Additionally, the following configuration files are consumed:
+
+- `config/webpack.client.config.js` - used for building the client bundle (extends `webpack.base.config`)
+- `config/webpack.server.config.js` - used for building the server bundle (extends `webpack.base.config`)
+- `config/keystone.config.js` - configuration passed to [KeystoneJS](http://keystonejs.com/docs/configuration/), if enabled
+- `postcss.config.js` - configuration past to [PostCSS](https://github.com/michael-ciniawsky/postcss-load-config)
 
 ## License
 
