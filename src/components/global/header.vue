@@ -12,10 +12,18 @@
             </div>
             <div class="top-bar-right">
                 <ul class="menu align-right">
+                    <li v-if="uid">
+                        <router-link :to="{ name: 'profile' }">
+                            <i class="fa fa-user"></i><span class="show-for-medium">Profile</span>
+                        </router-link>
+                    </li>
                     <li>
-                        <a href="/keystone">
-                            <i class="fa fa-cog"></i><span class="show-for-medium">Admin Dashboard</span>
-                        </a>
+                        <router-link v-if="!uid" :to="{ name: 'login' }">
+                            <i class="fa fa-sign-in"></i><span class="show-for-medium">Login</span>
+                        </router-link>
+                        <router-link v-if="uid" :to="{ name: 'logout' }">
+                            <i class="fa fa-sign-out"></i><span class="show-for-medium">Logout</span>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -24,8 +32,16 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+
   export default {
-    name: 'header'
+    name: 'header',
+
+    computed: {
+      uid() {
+        return this.$store.state.global.user._id
+      }
+    }
   }
 </script>
 

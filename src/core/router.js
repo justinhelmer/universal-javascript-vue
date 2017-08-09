@@ -9,12 +9,15 @@
  * @see https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import
  */
 
+import axios from 'axios';
 import Vue from 'vue'
 import Router from 'vue-router';
+import config from '../../config';
+import keystoneConfig from '../../config/keystone.config';
 
 Vue.use(Router);
 
-export function createRouter () {
+export function createRouter (store) {
   return new Router({
     mode: 'history',
     routes: [
@@ -32,6 +35,47 @@ export function createRouter () {
         name: 'item',
         path: '/items/:id',
         component: () => import('../components/item.vue')
+      },
+      {
+        name: 'login',
+        path: '/user/login',
+        component: () => import('../components/login.vue'),
+        beforeEnter: (to, from, next) => {
+          if (store.state.global.user._id) {
+            return next(keystoneConfig['signin redirect']);
+          }
+
+          next();
+        }
+      },
+      {
+        name: 'logout',
+        path: '/user/logout',
+        beforeEnter: (to, from, next) => {
+          if (!store.state.global.user._id) {
+            return next(keystoneConfig['signout redirect']);
+          }
+
+          axios
+            .post(config.api.base + '/user/logout', { proxy: { port: config.port } })
+            .then(() => {
+              next(keystoneConfig['signout redirect']);
+              store.state.global.user._id = null;
+            })
+            .catch(error => console.log(error));
+        }
+      },
+      {
+        name: 'profile',
+        path: '/user/profile',
+        component: () => import('../components/profile.vue'),
+        beforeEnter: (to, from, next) => {
+          if (!store.state.global.user._id) {
+            return next(keystoneConfig['signin url']);
+          }
+
+          next();
+        }
       }
     ]
   });

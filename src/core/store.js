@@ -21,8 +21,16 @@ export function createStore () {
       items: []
     },
     actions: {
-      fetch({commit}, {endpoint, store, id, params}) {
-        const base = config.api.base || '/api';
+      login(store, {email, password}) {
+        return axios
+          .post(base + '/user/login', { email, password }, defaultOpts)
+          .then(({data}) => {
+            store.commit('replaceItems', { namespace: 'user', data, global: true });
+          })
+          .catch(errorHandler);
+      },
+
+      fetch(store, {endpoint, namespace, id, params, global}) {
         let uri = base + '/' + endpoint;
 
         if (id) {

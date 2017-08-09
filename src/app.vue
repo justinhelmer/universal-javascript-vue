@@ -31,6 +31,7 @@
     @include foundation-top-bar;
     @include foundation-xy-grid-classes;
     @include foundation-typography;
+    @include foundation-forms;
     @include foundation-button;
     @include foundation-visibility-classes;
     @include foundation-flex-classes;
