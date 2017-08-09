@@ -1,5 +1,5 @@
 const keystone = require('keystone');
-require('./models');
+require('./keystone/models');
 
 keystone.init(require('../config/keystone.config'));
 keystone.set('routes', require('./routes'));
