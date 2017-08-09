@@ -21,14 +21,13 @@ import { createApp } from './app';
 
 export default context => {
   return new Promise((resolve, reject) => {
-    const { app, router, store } = createApp();
-
     Vue.use({
       install: (Vue) => {
-        Vue.cookies = new Cookies(context.cookie);
+        Vue.cookies = new Cookies(context.cookie || '');
       }
     });
 
+    const { app, router, store } = createApp();
     const { url } = context;
     const fullPath = router.resolve(url).route.fullPath;
 

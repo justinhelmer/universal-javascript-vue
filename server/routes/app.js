@@ -13,12 +13,12 @@
  * @see src/main.server.js
  */
 
-const Cookies = require('universal-cookie');
 const fs = require('fs');
 const LRU = require('lru-cache');
 const path = require('path');
 const {createBundleRenderer} = require('vue-server-renderer');
 const config = require('../../config');
+const uidCookie = require('../lib/uid-cookie');
 
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = file => path.resolve(__dirname, file);
@@ -66,23 +66,12 @@ module.exports = app => {
 
   function render(req, res) {
     res.setHeader('Content-Type', 'text/html');
-    const cookies = new Cookies(req.headers.cookie);
-
-    // Make UID available to the client if there is an active session
-    if (req.user) {
-      const uid = req.user._id.toString();
-
-      // this will set the cookie on the server, so that universal-cookie will parse it in main.server.js for SSR
-      cookies.set('uid', uid);
-
-      // this will set the cookie on the client
-      res.cookie('uid', uid, { httpOnly: false });
-    }
+    uidCookie.set(req, res);
 
     const context = {
       title: config.title,
       url: req.url,
-      cookie: cookies.getAll({ doNotParse: true })
+      cookie: req.headers.cookie
     };
 
     renderer.renderToString(context, (err, html) => {

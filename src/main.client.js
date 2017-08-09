@@ -22,6 +22,13 @@
  */
 import Cookies from 'universal-cookie';
 import Vue from 'vue';
+
+Vue.use({
+  install: (Vue) => {
+    Vue.cookies = new Cookies();
+  }
+});
+
 import {createApp} from './app';
 const {app, router, store} = createApp();
 
@@ -32,12 +39,6 @@ if (window.__INITIAL_STATE__) {
 router.onReady(() => {
   router.beforeResolve(fetchAsyncData);
   app.$mount('#app');
-});
-
-Vue.use({
-  install: (Vue) => {
-    Vue.cookies = new Cookies();
-  }
 });
 
 /**

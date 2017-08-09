@@ -1,6 +1,6 @@
 const keystone = require('keystone');
 const config = require('../../config');
-// const keystoneConfg = require('../../config/keystone.config');
+const uidCookie = require('../lib/uid-cookie');
 
 module.exports = app => {
   let base = config.api.base;
