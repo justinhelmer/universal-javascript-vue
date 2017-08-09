@@ -32,6 +32,7 @@ export function createStore() {
           .post(base + '/user/login', { email, password }, defaultOpts)
           .then(({ data }) => {
             store.commit('replaceItems', { namespace: 'user', data, global: true });
+            return data;
           })
           .catch(errorHandler);
       },

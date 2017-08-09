@@ -11,7 +11,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import config from '../../config';
 
   export default {
@@ -26,18 +25,11 @@
 
     methods: {
       login() {
-        this.$store.dispatch('login', this, );
-        const { email, password } = this;
-
-        axios
-          .post(config.api.base + '/user/login', { email, password }, {
-            proxy: { port: config.port }
-          })
-          .then(({data}) => {
+        this.$store.dispatch('login', this)
+          .then((data) => {
             this.$router.push({ name: 'profile' });
             this.$store.state.global.uid = data._id;
-          })
-          .catch(error => console.log(error));
+          });
       }
     }
   }
