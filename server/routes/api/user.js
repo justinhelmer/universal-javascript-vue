@@ -36,6 +36,6 @@ module.exports = (app, base) => {
   });
 
   function formatUser(user) {
-    return _.omit(user.toJSON(), ['canAccessKeystone', 'password'])
+    return _.omit(user.toJSON(), 'password')
   }
 };
