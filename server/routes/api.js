@@ -14,7 +14,7 @@ module.exports = app => {
   config.api.mock ? require('../mockapi')(app, base) : api();
 
   function api() {
-
+    // user login
     app.post(base + '/user/login', (req, res) => {
       if (!req.body.email || !req.body.password) {
         return res.status(401).json({ error: 'email and password required' });
@@ -28,6 +28,7 @@ module.exports = app => {
       });
     });
 
+    // user logout
     app.post(base + '/user/logout', (req, res) => {
       keystone.session.signout(req, res, function(err) {
         uidCookie.remove(req, res);
@@ -35,8 +36,8 @@ module.exports = app => {
       });
     });
 
+    // restrict GET users/:id to the active user session
     app.get(base + '/users/:id', (req, res, next) => {
-      // @TODO need to check session permissions, but req.user not available on initial page load
       if (req.user && req.user._id.toString() === req.params.id) {
         return next();
       }

@@ -7,10 +7,15 @@ Vue.use(Vuex);
 
 export function createStore() {
   const base = config.api.base || '/api';
-  const defaultOpts = {
-    proxy: { port: config.port },
-    headers: { cookie: Vue.cookies.getCookieString() }
+  let defaultOpts = {
+    proxy: { port: config.port }
   };
+
+  // HTTP cookie headers need to be preserved to maintain session through API requests.
+  // Client cookies are automatically passed, and XHR will throw an error if set manually
+  if (process.env.VUE_ENV === 'server') {
+    defaultOpts.headers = { cookie: Vue.cookies.getCookieString() };
+  }
 
   return new Vuex.Store({
     state: {
