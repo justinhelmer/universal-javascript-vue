@@ -18,12 +18,6 @@ processes.server.on('watch:restart', function(info) {
   console.log('\n%s: detected change to %s', chalk.bold.green('(restart)'), chalk.cyan(info.stat));
 });
 
-processes.server.on('exit', function () {
-  if (processes.db.running) {
-    processes.db.stop();
-  }
-});
-
 console.log('------------------------------------------------');
 console.log('Starting MongoDB...');
 
