@@ -13,7 +13,7 @@
       return store.dispatch('fetch', {
         id: route.params.id,
         endpoint: 'items',
-        store: 'items'
+        namespace: 'items'
       });
     },
 
