@@ -9,7 +9,7 @@ module.exports = (app, base) => {
   const user = fixtures.users[0];
 
   app.use((req, res, next) => {
-    let cookies = cookie.parse(req.headers.cookie);
+    let cookies = cookie.parse(req.headers.cookie || '');
 
     if (!cookies.uid) {
       req.headers.cookie += '; ' + cookie.serialize('uid', '1');
