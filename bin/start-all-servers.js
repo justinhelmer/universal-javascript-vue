@@ -1,12 +1,21 @@
+const chalk = require('chalk');
 const forever = require('forever-monitor');
 const path = require('path');
 
 const mongo = require('../config/keystone.config').mongo;
+const serverDirectory = path.resolve(__dirname, '../server');
 let processes = {};
 
-processes.server = new (forever.Monitor)(path.resolve(__dirname, '../server/index.js'), {
+processes.server = new (forever.Monitor)(path.join(serverDirectory, 'index.js'), {
   max: 1,
-  args: ['--color']
+  args: ['--color'],
+  watch: true,
+  watchIgnoreDotFiles: true,
+  watchDirectory: serverDirectory
+});
+
+processes.server.on('watch:restart', function(info) {
+  console.log('\n%s: detected change to %s', chalk.bold.green('(restart)'), chalk.cyan(info.stat));
 });
 
 processes.server.on('exit', function () {
@@ -24,10 +33,10 @@ processes.db = forever.start(['mongod'], {
 });
 
 processes.db.on('start', function () {
-  console.log('MongoDB is ready on', mongo);
+  console.log('MongoDB is ready on', chalk.cyan(mongo));
 
   console.log('------------------------------------------------');
-  console.log('Starting Node server...');
+  console.log('\nStarting Node server...');
 
   processes.server.start();
 });
