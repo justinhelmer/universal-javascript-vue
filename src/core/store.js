@@ -5,10 +5,11 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export function createStore () {
+export function createStore() {
   const base = config.api.base || '/api';
   const defaultOpts = {
-    proxy: { port: config.port }
+    proxy: { port: config.port },
+    headers: { cookie: Vue.cookies.getCookieString() }
   };
 
   return new Vuex.Store({
@@ -21,16 +22,16 @@ export function createStore () {
       items: []
     },
     actions: {
-      login(store, {email, password}) {
+      login(store, { email, password }) {
         return axios
           .post(base + '/user/login', { email, password }, defaultOpts)
-          .then(({data}) => {
+          .then(({ data }) => {
             store.commit('replaceItems', { namespace: 'user', data, global: true });
           })
           .catch(errorHandler);
       },
 
-      fetch(store, {endpoint, namespace, id, params, global}) {
+      fetch(store, { endpoint, namespace, id, params, global }) {
         let uri = base + '/' + endpoint;
 
         if (id) {
@@ -39,11 +40,11 @@ export function createStore () {
 
         return axios
           .get(uri, Object.assign({ params }, defaultOpts))
-          .then(function ({data}) {
+          .then(function ({ data }) {
             if (id && !global) {
-              store.commit('setItem', {namespace, id, data});
+              store.commit('setItem', { namespace, id, data });
             } else {
-              store.commit('replaceItems', {namespace, data, global});
+              store.commit('replaceItems', { namespace, data, global });
             }
           })
           .catch(errorHandler);
@@ -63,7 +64,7 @@ export function createStore () {
         }
       },
 
-      replaceItems (state, {namespace, data, global}) {
+      replaceItems (state, { namespace, data, global }) {
         if (global) {
           state.global[namespace] = Object.assign({}, data);
         } else {
