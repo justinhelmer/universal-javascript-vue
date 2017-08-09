@@ -15,8 +15,8 @@
  * @see src/main.client.js
  * @see src/core/store.js
  */
-import Cookies from 'universal-cookie';
 import Vue from 'vue';
+import Cookies from './lib/cookies';
 import { createApp } from './app';
 
 export default context => {
