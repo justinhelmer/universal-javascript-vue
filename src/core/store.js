@@ -38,6 +38,10 @@ export function createStore() {
       },
 
       fetch(store, { endpoint, namespace, id, params, global }) {
+        if (!namespace) {
+          namespace = endpoint;
+        }
+
         let uri = base + '/' + endpoint;
 
         if (id) {

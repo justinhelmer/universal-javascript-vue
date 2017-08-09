@@ -12,8 +12,7 @@
     asyncData ({ store, route }) {
       return store.dispatch('fetch', {
         id: route.params.id,
-        endpoint: 'items',
-        namespace: 'items'
+        endpoint: 'items'
       });
     },
 

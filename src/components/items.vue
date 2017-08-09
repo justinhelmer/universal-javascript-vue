@@ -15,8 +15,7 @@
 
     asyncData ({ store }) {
       return store.dispatch('fetch', {
-        endpoint: 'items',
-        namespace: 'items'
+        endpoint: 'items'
       });
     },
 
