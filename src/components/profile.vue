@@ -32,7 +32,7 @@
         const name = this.$store.state.global.user.name;
 
         if (name) {
-          return this.$store.state.global.user.name.first + ' ' + this.$store.state.global.user.name.last;
+          return name.first + ' ' + name.last;
         }
 
         return '';
