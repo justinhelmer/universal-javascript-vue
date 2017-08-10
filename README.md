@@ -66,7 +66,6 @@ Scaffold new projects using the generator:
 ```bash
 mkdir my-project; cd my-project
 yo universal-javascript-vue
-npm install
 ```
 
 ## Building and serving the app
