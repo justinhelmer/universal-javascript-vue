@@ -61,6 +61,8 @@ npm install -g yo
 npm install -g generator-universal-javascript-vue
 ```
 
+If using [KeystoneJS](http://keystonejs.com/), you must also install [MongoDB](https://docs.mongodb.com/manual/installation/).
+
 Scaffold new projects using the generator:
 
 ```bash
