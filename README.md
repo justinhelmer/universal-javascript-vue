@@ -40,7 +40,7 @@ In addition:
 - Support for priority asset resource [prefetching / preloading](https://www.keycdn.com/blog/resource-hints/)
 - Automatically inlines the CSS necessary to render the components served by each chunk
 - Optimized production bundling that does the following:
-     - Uglifies/minifies the final chunks using the [Webpack UglifyJS Plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
+     - Uglifies/minifies the final chunks using the [babili-webpack-plugin](https://www.npmjs.com/package/babili-webpack-plugin)
      - Optimized CSS using [cssnano](http://cssnano.co/)
      - Loads compiled CSS and javascript in parallel using the [ExtractTextPlugin](https://github.com/webpack-contrib/extract-text-webpack-plugin)
 
