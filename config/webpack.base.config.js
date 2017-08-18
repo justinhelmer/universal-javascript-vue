@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const BabiliPlugin = require('babili-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
@@ -12,7 +13,7 @@ var config = {
   output: {
     path: resolve('../dist'),
     publicPath: '/dist/',
-    chunkFilename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
@@ -41,9 +42,7 @@ var config = {
   },
   plugins: isProd
     ? [
-      new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false }
-      }),
+      new BabiliPlugin(),
 
       new ExtractTextPlugin({
         filename: 'common.[chunkhash].css'
